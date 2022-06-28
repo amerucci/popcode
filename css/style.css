@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'gothambold';
+    src: url('../fonts/gotham-bold-webfont.woff2') format('woff2'),
+        url('../fonts/gotham-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gothammedium';
+    src: url('../fonts/gothammedium-webfont.woff2') format('woff2'),
+        url('../fonts/gothammedium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gothambook';
+    src: url('../fonts/gothambook-webfont.woff2') format('woff2'),
+        url('../fonts/gothambook-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+    padding:0; margin:0;
+    font-size:12px;
+    font-family: 'gothammedium';
+}
+
+/***************
+ * LEGALS PART *
+ ***************/
+
+.legals{
+    position: absolute;
+    bottom: 20px; right:20px;
+}
+
+.legals a{
+    color:#FFFFFF;
+    text-decoration:none;
+    position:relative;
+    margin-left:25px;
+}
+
+.legals a:before{
+    color: #FFFFFF;
+    text-decoration: none;
+    width: 0;
+    bottom: -10px;
+    content: "";
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 500ms ease-in-out
+}
+
+.legals a:hover:before{
+    width: 100%;
+}
+
+#loader{
+    height:100vh; width:100vw;
+    background:url(../img/fond.jpg);
+    background-size: cover;
+    background-position: center center;  
+}
