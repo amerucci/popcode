@@ -71,3 +71,54 @@ body{
     background-size: cover;
     background-position: center center;  
 }
+
+#lettre{
+    animation: blink linear infinite 2s;
+  }
+
+
+#lettre2{
+    animation: blink linear infinite 3s;
+  }
+
+ 
+
+
+svg{width:50%}
+
+@keyframes blink {
+    78% {
+      color: inherit;
+      filter: drop-shadow(0px 0px 0px #FF00D7);
+    }
+    79%{
+        stroke: #fff;
+    }
+    80% {
+      
+      text-shadow: none;
+    }
+    81% {
+        stroke: inherit;
+      text-shadow: inherit;
+    }
+    82% {
+        stroke: #fff;
+        
+    }
+    83% {
+        stroke: inherit;
+      text-shadow: inherit;
+    }
+    92% {
+        stroke: #fff;
+      text-shadow: none;
+    }
+    92.5% {
+        stroke: inherit;
+      text-shadow: inherit;
+    }
+  }
+
+
+  
