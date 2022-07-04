@@ -1,128 +1,210 @@
 @font-face {
-    font-family: 'gothambold';
-    src: url('../fonts/gotham-bold-webfont.woff2') format('woff2'),
-        url('../fonts/gotham-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'gothambold';
+  src: url('../fonts/gotham-bold-webfont.woff2') format('woff2'),
+    url('../fonts/gotham-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'gothammedium';
-    src: url('../fonts/gothammedium-webfont.woff2') format('woff2'),
-        url('../fonts/gothammedium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'gothammedium';
+  src: url('../fonts/gothammedium-webfont.woff2') format('woff2'),
+    url('../fonts/gothammedium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'gothambook';
-    src: url('../fonts/gothambook-webfont.woff2') format('woff2'),
-        url('../fonts/gothambook-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'gothambook';
+  src: url('../fonts/gothambook-webfont.woff2') format('woff2'),
+    url('../fonts/gothambook-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 
 }
 
-body{
-    padding:0; margin:0;
-    font-size:12px;
-    font-family: 'gothammedium';
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  font-family: 'gothammedium';
 }
 
 /***************
- * LEGALS PART *
- ***************/
+* LEGALS PART *
+***************/
 
-.legals{
-    position: absolute;
-    bottom: 20px; right:20px;
+.legals {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
-.legals a{
-    color:#FFFFFF;
-    text-decoration:none;
-    position:relative;
-    margin-left:25px;
+.legals a {
+  color: #FFFFFF;
+  text-decoration: none;
+  position: relative;
+  margin-left: 25px;
 }
 
-.legals a:before{
-    color: #FFFFFF;
-    text-decoration: none;
-    width: 0;
-    bottom: -10px;
-    content: "";
-    height: 2px;
-    background: #fff;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: width 500ms ease-in-out
+.legals a:before {
+  color: #FFFFFF;
+  text-decoration: none;
+  width: 0;
+  bottom: -10px;
+  content: "";
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 500ms ease-in-out
 }
 
-.legals a:hover:before{
-    width: 100%;
+.legals a:hover:before {
+  width: 100%;
 }
 
-#loader{
-    height:100vh; width:100vw;
-    background:url(../img/fond.jpg);
-    background-size: cover;
-    background-position: center center;  
+
+/******************
+* LOADER SECTION *
+******************/
+
+
+#loader {
+  height: 100vh;
+  width: 100vw;
+  background: url(../img/fond.jpg);
+  background-size: cover;
+  background-position: center center;
 }
 
-#lettre{
-    animation: blink linear infinite 1.5s;
-  }
+.loaderelm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 100%
+}
+
+#lettre {
+  animation: blink linear infinite 1.5s;
+}
 
 
-#lettre2{
-    animation: blink linear infinite 2.5s;
-  }
+#lettre2 {
+  animation: blink linear infinite 2.5s;
+}
 
-  #lettre3{
-    animation: blink linear infinite 0.5s;
-  }
+#lettre3 {
+  animation: blink linear infinite 0.5s;
+}
 
- 
+#loadedpercent {
+  color: #0AEFF7;
+  text-align: center;
+
+}
 
 
-svg{width:50%}
+
+
+
+
+svg {
+  width: 100%;
+}
 
 @keyframes blink {
-    78% {
-      color: inherit;
-      filter: drop-shadow(0px 0px 0px #FF00D7);
-    }
-    79%{
-        stroke: #fff;
-    }
-    80% {
-      
-      text-shadow: none;
-    }
-    81% {
-        stroke: inherit;
-      text-shadow: inherit;
-    }
-    82% {
-        stroke: #fff;
-        
-    }
-    83% {
-        stroke: inherit;
-      text-shadow: inherit;
-    }
-    92% {
-        stroke: #fff;
-      text-shadow: none;
-    }
-    92.5% {
-        stroke: inherit;
-      text-shadow: inherit;
-    }
+  78% {
+    color: inherit;
+    filter: drop-shadow(0px 0px 0px #FF00D7);
   }
 
+  79% {
+    stroke: #fff;
+  }
 
-  
+  80% {
+
+    text-shadow: none;
+  }
+
+  81% {
+    stroke: inherit;
+    text-shadow: inherit;
+  }
+
+  82% {
+    stroke: #fff;
+
+  }
+
+  83% {
+    stroke: inherit;
+    text-shadow: inherit;
+  }
+
+  92% {
+    stroke: #fff;
+    text-shadow: none;
+  }
+
+  92.5% {
+    stroke: inherit;
+    text-shadow: inherit;
+  }
+}
+
+.loaderContenainer {
+  width: 50%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%);
+}
+
+.blueBar {
+  color: #fff !important;
+  background-color: #0AEFF7 !important;
+}
+
+/***********************
+ * LOADER INSTRUCTIONS *
+ ***********************/
+.instructions {
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructionsNumber {
+  color: #0AEFF7;
+  font-size: 150px;
+  letter-spacing: -11px;
+  font-family: 'gothambold';
+}
+
+.instructionContent {
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 30px;
+  font-weight: lighter;
+  font-family: 'gothambook';
+  max-width: 240px;
+}
+
+button#startGame {
+  border: none;
+  background: transparent;
+  color: #FFAAFF;
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-top: 30px;
+  cursor: pointer;
+}
