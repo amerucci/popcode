@@ -30,6 +30,7 @@ body {
   margin: 0;
   font-size: 12px;
   font-family: 'gothammedium';
+  overflow: hidden;
 }
 
 /***************
@@ -208,3 +209,23 @@ button#startGame {
   margin-top: 30px;
   cursor: pointer;
 }
+
+#game{ height: 100vh; margin: 0 auto 0 auto; max-width: 100%; width: 100vw; }
+#game .zoom{ background-color: #DDD; height: 100%; margin: auto; overflow: hidden; width: 100%; }
+#game .zoom .media{ bottom: 0; display: block; left: 0; margin: auto;  width: 100%; position: absolute; right: 0; top: 0; 
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; 
+}
+.transition{
+  transition: -moz-transform ease 200ms;
+  transition: -ms-transform ease 200ms;
+  transition: -o-transform ease 200ms;
+  transition: -webkit-transform ease 200ms;
+  transition: transform ease 200ms;
+}
+
+
+
