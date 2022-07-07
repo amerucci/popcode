@@ -6,6 +6,8 @@ var instructions = document.querySelector(".instructions")
 var loader = document.querySelector("#loader")
 var startGame = document.querySelector("#startGame")
 var game = document.querySelector("#game")
+var inGame = false
+var theAnswer= document.querySelector("#theAnswer")
 
 //FUNCTIONS
 function move() {
@@ -31,14 +33,27 @@ function showContent() {
 function enterGame() {
     loader.style.display = "none"
     game.style.display = "flex"
+    inGame = true
 }
 
 //ACTIONS
 
 window.onload = move;
-setTimeout(showContent, 4000);
+setTimeout(showContent, 0);
 startGame.addEventListener("click", enterGame);
 
+//ANSWER SECTION
+
+window.addEventListener("keydown", function (event) {
+    var keysAllowed = "abcdefghijklmnopqrstuvwxyz"
+    var key = event.key
+    if(keysAllowed.includes(key) && inGame==true){
+        document.querySelector("#answer").style="display:flex"
+        theAnswer.value += event.key  
+    }
+    
+
+})
 
 
 
@@ -690,3 +705,4 @@ function removeClass($element, targetClass) {
 
     $element.className = $element.className.replace(rgx, "");
 }
+

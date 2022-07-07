@@ -227,5 +227,19 @@ button#startGame {
   transition: transform ease 200ms;
 }
 
+/***************
+ * ANSWER PART *
+ ***************/
 
+ #answer{
+  position:
+  absolute;
+  background:#ff9900;
+  width:100vw;
+  Height:100vh;
+  top:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
 
