@@ -1,7 +1,7 @@
 //VARIABLE
-var elem = document.getElementById("myBar");  
-var score = document.getElementById("loadedpercent"); 
-var loaderContenainer = document.querySelector(".loaderContenainer") 
+var elem = document.getElementById("myBar");
+var score = document.getElementById("loadedpercent");
+var loaderContenainer = document.querySelector(".loaderContenainer")
 var instructions = document.querySelector(".instructions")
 var loader = document.querySelector("#loader")
 var startGame = document.querySelector("#startGame")
@@ -11,32 +11,33 @@ var game = document.querySelector("#game")
 function move() {
     var width = 1;
     var id = setInterval(frame, 33);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%';
-       score.innerHTML = width * 1  + '%'; 
-      }
-    }
-  }
 
-  function showContent() {
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+            score.innerHTML = width * 1 + '%';
+        }
+    }
+}
+
+function showContent() {
     loaderContenainer.style.display = "none";
     instructions.style.display = "flex";
-  }
+}
 
-  function enterGame(){
+function enterGame() {
     loader.style.display = "none"
     game.style.display = "flex"
-  }
+}
 
 //ACTIONS
 
 window.onload = move;
 setTimeout(showContent, 4000);
-startGame.addEventListener("click",enterGame);
+startGame.addEventListener("click", enterGame);
 
 
 
@@ -121,7 +122,7 @@ function zoom(classNames = {}, settings = {}) {
 
     /* EVENT - load - window ****************************************************/
     /****************************************************************************/
-    window.addEventListener("load", function() {
+    window.addEventListener("load", function () {
         /* Wait for images to be loaded */
         for (var i = 0; i < $zoom.length; i++) {
             /* Initialize selectors */
@@ -133,7 +134,7 @@ function zoom(classNames = {}, settings = {}) {
 
         /* EVENT - resize - window ************************************************/
         /**************************************************************************/
-        window.addEventListener("resize", function() {
+        window.addEventListener("resize", function () {
             for (var i = 0; i < $zoom.length; i++) {
                 /* Initialize selectors */
                 $container = $zoom[i];
@@ -193,7 +194,7 @@ function zoom(classNames = {}, settings = {}) {
 
     /* EVENT - touchstart - document ********************************************/
     /****************************************************************************/
-    document.addEventListener("touchstart", function() {
+    document.addEventListener("touchstart", function () {
         touchable = true;
     });
 
@@ -248,12 +249,12 @@ function zoom(classNames = {}, settings = {}) {
             doubleClickMonitor[1] = initialPointerOffsetX;
             doubleClickMonitor[2] = initialPointerOffsetY;
 
-            setTimeout(function() {
+            setTimeout(function () {
                 doubleClickMonitor = [null];
             }, 300);
         } else if (doubleClickMonitor[0] === e.target && mousemoveCount <= 5 && isWithinRange(initialPointerOffsetX, doubleClickMonitor[1] - 10, doubleClickMonitor[1] + 10) === true && isWithinRange(initialPointerOffsetY, doubleClickMonitor[2] - 10, doubleClickMonitor[2] + 10) === true) {
             addClass($element, _transition);
-            
+
             if (hasClass($container, _active) === true) {
                 /* Set attributes */
                 $element.setAttribute(_dataScale, 1);
@@ -276,8 +277,7 @@ function zoom(classNames = {}, settings = {}) {
                 moveScaleElement($element, 0, 0, C_scaleDefault);
             }
 
-            setTimeout(function()
-            {
+            setTimeout(function () {
                 removeClass($element, _transition);
             }, 200);
 
@@ -383,12 +383,12 @@ function zoom(classNames = {}, settings = {}) {
                 doubleTapMonitor[1] = initialPointerOffsetX;
                 doubleTapMonitor[2] = initialPointerOffsetY;
 
-                setTimeout(function() {
+                setTimeout(function () {
                     doubleTapMonitor = [null];
                 }, 300);
             } else if (doubleTapMonitor[0] === e.target && touchmoveCount <= 1 && isWithinRange(initialPointerOffsetX, doubleTapMonitor[1] - 10, doubleTapMonitor[1] + 10) === true && isWithinRange(initialPointerOffsetY, doubleTapMonitor[2] - 10, doubleTapMonitor[2] + 10) === true) {
                 addClass($element, _transition);
-                
+
                 if (hasClass($container, _active) === true) {
                     /* Set attributes */
                     $element.setAttribute(_dataScale, 1);
@@ -411,8 +411,7 @@ function zoom(classNames = {}, settings = {}) {
                     moveScaleElement($element, 0, 0, C_scaleDefault);
                 }
 
-                setTimeout(function()
-                {
+                setTimeout(function () {
                     removeClass($element, _transition);
                 }, 200);
 
@@ -440,8 +439,6 @@ function zoom(classNames = {}, settings = {}) {
         capture = true;
     }
 
-    /* @-<touchMove *************************************************************/
-    /****************************************************************************/
     function touchMove(e) {
         e.preventDefault();
 
@@ -516,8 +513,6 @@ function zoom(classNames = {}, settings = {}) {
         }
     }
 
-    /* @-<touchEnd **************************************************************/
-    /****************************************************************************/
     function touchEnd(e) {
         touchCount = e.touches.length;
 
@@ -541,8 +536,6 @@ function zoom(classNames = {}, settings = {}) {
         }
     }
 
-    /* @-<wheel *****************************************************************/
-    /****************************************************************************/
     function wheel(e) {
         /* Initialize selectors */
         $container = this;
@@ -599,19 +592,12 @@ function zoom(classNames = {}, settings = {}) {
     }
 }
 
-/* Library ********************************************************************/
-/******************************************************************************/
-
-/* @-<addClass ****************************************************************/
-/******************************************************************************/
 function addClass($element, targetClass) {
     if (hasClass($element, targetClass) === false) {
         $element.className += " " + targetClass;
     }
 }
 
-/* @-<disableScroll ***********************************************************/
-/******************************************************************************/
 function disableScroll() {
     if (window.addEventListener) // older FF
     {
@@ -624,8 +610,6 @@ function disableScroll() {
     document.onkeydown = preventDefaultForScrollKeys;
 }
 
-/* @-<enableScroll ************************************************************/
-/******************************************************************************/
 function enableScroll() {
     if (window.removeEventListener) {
         window.removeEventListener('DOMMouseScroll', preventDefault, false);
@@ -637,8 +621,6 @@ function enableScroll() {
     document.onkeydown = null;
 }
 
-/* @isWithinRange *************************************************************/
-/******************************************************************************/
 function isWithinRange(value, min, max) {
     if (value >= min && value <= max) {
         return true;
@@ -647,8 +629,6 @@ function isWithinRange(value, min, max) {
     }
 }
 
-/* @hasClass ******************************************************************/
-/******************************************************************************/
 function hasClass($element, targetClass) {
     var rgx = new RegExp("(?:^|\\s)" + targetClass + "(?!\\S)", "g");
 
@@ -659,8 +639,6 @@ function hasClass($element, targetClass) {
     }
 }
 
-/* @-<massAddEventListener ****************************************************/
-/******************************************************************************/
 function massAddEventListener($elements, event, customFunction, useCapture) {
     var useCapture = useCapture || false;
 
@@ -669,8 +647,6 @@ function massAddEventListener($elements, event, customFunction, useCapture) {
     }
 }
 
-/* @-<minMax ******************************************************************/
-/******************************************************************************/
 function minMax(value, min, max) {
     if (value < min) {
         value = min;
@@ -681,14 +657,10 @@ function minMax(value, min, max) {
     return value;
 }
 
-/* @-<moveScaleElement ********************************************************/
-/******************************************************************************/
 function moveScaleElement($element, targetOffsetX, targetOffsetY, targetScale) {
     $element.style.cssText = "-moz-transform : translate(" + targetOffsetX + ", " + targetOffsetY + ") scale(" + targetScale + "); -ms-transform : translate(" + targetOffsetX + ", " + targetOffsetY + ") scale(" + targetScale + "); -o-transform : translate(" + targetOffsetX + ", " + targetOffsetY + ") scale(" + targetScale + "); -webkit-transform : translate(" + targetOffsetX + ", " + targetOffsetY + ") scale(" + targetScale + "); transform : translate3d(" + targetOffsetX + ", " + targetOffsetY + ", 0) scale3d(" + targetScale + ", " + targetScale + ", 1);";
 }
 
-/* @-<preventDefault **********************************************************/
-/******************************************************************************/
 function preventDefault(e) {
     e = e || window.event;
 
@@ -699,8 +671,6 @@ function preventDefault(e) {
     e.returnValue = false;
 }
 
-/* @preventDefaultForScrollKeys ***********************************************/
-/******************************************************************************/
 function preventDefaultForScrollKeys(e) {
     var keys = {
         37: 1,
@@ -715,13 +685,8 @@ function preventDefaultForScrollKeys(e) {
     }
 }
 
-/* @removeClass ***************************************************************/
-/******************************************************************************/
 function removeClass($element, targetClass) {
     var rgx = new RegExp("(?:^|\\s)" + targetClass + "(?!\\S)", "g");
 
     $element.className = $element.className.replace(rgx, "");
 }
-
-     
- 
