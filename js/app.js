@@ -7,7 +7,37 @@ var loader = document.querySelector("#loader")
 var startGame = document.querySelector("#startGame")
 var game = document.querySelector("#game")
 var inGame = false
-var theAnswer= document.querySelector("#theAnswer")
+var isTyping = false
+var theAnswer = document.querySelector("#theAnswer")
+var close = document.querySelector("#close")
+let languages = [
+    "Javascript",
+    "HTML",
+    "CSS",
+    "Python",
+    "Java",
+    "Bash",
+    "Powershell",
+    "c#",
+    "PHP",
+    "c++",
+    "TypeScript",
+    "C",
+    "Ruby",
+    "Go",
+    "Assembly",
+    "Swift",
+    "Kotlin",
+    "R",
+    "VBA",
+    "Objective-c",
+    "Scala",
+    "Rust",
+    "Dart",
+    "Elixir",
+    "Clojure",
+    "WebAssembly"
+]
 
 //FUNCTIONS
 function move() {
@@ -36,6 +66,24 @@ function enterGame() {
     inGame = true
 }
 
+function checkLanguage() {
+    let language = theAnswer.value
+    let find = false
+    for (var i = 0; i < languages.length; i++) {
+        if (language.toLowerCase().replace("é", "e") === languages[i].toLowerCase().replace("é", "e")) {
+            find = true
+            break
+        } else {
+            find = false
+        }
+    }
+    if (find === true) {
+        console.log('success')
+    } else {
+        console.log('loupé')
+    }
+}
+
 //ACTIONS
 
 window.onload = move;
@@ -47,13 +95,51 @@ startGame.addEventListener("click", enterGame);
 window.addEventListener("keydown", function (event) {
     var keysAllowed = "abcdefghijklmnopqrstuvwxyz"
     var key = event.key
-    if(keysAllowed.includes(key) && inGame==true){
-        document.querySelector("#answer").style="display:flex"
-        theAnswer.value += event.key  
-    }
+    console.log(key)
+
     
 
+    if (keysAllowed.includes(key) && inGame == true) {
+       
+        document.querySelector("#answer").style = "display:flex"
+        theAnswer.value += event.key
+    }
+
+    if (key == "Enter" && theAnswer.value != "") {
+        document.querySelector("#answer").style = "display:flex"
+        inGame = true
+        checkLanguage()
+        theAnswer.value = ""
+        document.querySelector("#answer").style = "display:none"
+    }
+
+   
+
+    if (key == "Backspace") {
+        inGame = false
+        theAnswer.focus()
+    }
+
+ 
+
+   
+
 })
+
+document.querySelector("#theAnswer").addEventListener("click", function () {
+    inGame = false
+    console.log(inGame)
+})
+
+close.addEventListener("click", function () {
+    inGame = true
+    document.querySelector("#answer").style = "display:none"
+    theAnswer.value = ""
+    console.log(inGame)
+
+})
+
+console.log("ingame : " + inGame)
 
 
 
@@ -705,4 +791,3 @@ function removeClass($element, targetClass) {
 
     $element.className = $element.className.replace(rgx, "");
 }
-

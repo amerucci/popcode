@@ -232,14 +232,42 @@ button#startGame {
  ***************/
 
  #answer{
-  position:
-  absolute;
-  background:#ff9900;
+  position:absolute;
+  background: rgba(0, 0, 0, 0.7);
   width:100vw;
   Height:100vh;
   top:0;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
  }
 
+ #theAnswer{
+  font-size:80px;
+  color:#fff;
+  border:none;
+  background:transparent;
+  text-align:center;
+  text-transform: uppercase;
+
+ }
+
+
+ #close{
+  color:#fff
+ }
+
+.theAnswerInstruction{
+  color: #fff;
+  letter-spacing: 5px;
+  margin-top: 50px;
+  font-family: 'gothambook';
+}
+
+#theAnswer:focus-visible {
+  color:#fff;
+  border:none;
+  background:transparent;
+  outline: initial;
+}
