@@ -38,8 +38,22 @@ let languages = [
     "Clojure",
     "WebAssembly"
 ]
+let scoreFind = document.querySelector(".scoreFind")
+let scoreErrorOne = document.querySelector(".scoreErrorOne")
+let scoreErrorTwo = document.querySelector(".scoreErrorTwo")
+let scoreErrorThree = document.querySelector(".scoreErrorThree")
+
+let founded = 0
+let errors =0
+
+window.addEventListener("load", function() {
+    scoreFind.innerHTML = founded
+})
 
 //FUNCTIONS
+
+
+
 function move() {
     var width = 1;
     var id = setInterval(frame, 33);
@@ -79,8 +93,25 @@ function checkLanguage() {
     }
     if (find === true) {
         console.log('success')
+        founded +=1
+        scoreFind.innerHTML = founded
     } else {
-        console.log('loupé')
+        errors +=1
+        switch (errors){
+            case 1:
+                scoreErrorOne.style="color:#0AEFF7"
+            break
+            case 2:
+                scoreErrorTwo.style="color:#0AEFF7"
+            break
+            case 3:
+                scoreErrorThree.style="color:#0AEFF7"
+             
+            break
+          
+
+        }
+        console.log('loupé - ' +errors + 'commises')
     }
 }
 
@@ -93,7 +124,7 @@ startGame.addEventListener("click", enterGame);
 //ANSWER SECTION
 
 window.addEventListener("keydown", function (event) {
-    var keysAllowed = "abcdefghijklmnopqrstuvwxyz"
+    var keysAllowed = "abcdefghijklmnopqrstuvwxyz+"
     var key = event.key
     console.log(key)
 
