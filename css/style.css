@@ -41,6 +41,7 @@ body {
   position: absolute;
   bottom: 20px;
   right: 20px;
+  z-index: 2;
 }
 
 .legals a {
@@ -237,6 +238,7 @@ button#startGame {
   width:100vw;
   Height:100vh;
   top:0;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -270,4 +272,73 @@ button#startGame {
   border:none;
   background:transparent;
   outline: initial;
+}
+
+/******************
+ * GAME INTERFACE *
+ ******************/
+
+ .score{
+  position: absolute;
+  left: 0;top: O; z-index: 2;
+  color:#FFF;
+  display: flex;
+  left:30px;
+  top:20px ;
+
+ }
+
+ .scoreTxt{
+  color:#0AEFF7;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  font-size: 8px;
+text-align: center;
+letter-spacing: 2px;
+text-transform: uppercase;
+position:relative
+}
+
+.scoreTxt::before{
+  content:"";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background:#fff;
+  transform: rotate(-90deg) translateY(-5%);
+  -webkit-transform: rotate(-90deg) translateY(-5%);
+  -moz-transform: rotate(-90deg) translateY(-5%);
+  -ms-transform: rotate(-90deg) translateY(-5%);
+  -o-transform: rotate(-90deg) translateY(-5%);
+  left:50%;
+  margin-top: -5px;
+}
+
+.scoreInfos{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80px;
+  align-content: space-around;
+  height: 40px;
+}
+
+.scoreNumber {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size:18px;
+  width: 70px;color:#fff;
+  justify-content: space-between;
+}
+
+.scoreErrors {
+  width: 70px;
+  display: flex;
+  flex-direction: row;
+  font-size:18px;
+  color:#fff;
+  justify-content: space-between;
 }

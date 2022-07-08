@@ -97,10 +97,9 @@ window.addEventListener("keydown", function (event) {
     var key = event.key
     console.log(key)
 
-    
+
 
     if (keysAllowed.includes(key) && inGame == true) {
-       
         document.querySelector("#answer").style = "display:flex"
         theAnswer.value += event.key
     }
@@ -113,16 +112,23 @@ window.addEventListener("keydown", function (event) {
         document.querySelector("#answer").style = "display:none"
     }
 
-   
 
+    //CORRECT ANSWER
     if (key == "Backspace") {
         inGame = false
         theAnswer.focus()
     }
 
- 
+    //ESCAPE ANSWER SECTION
+    if (key == "Escape") {
+        inGame = true
+        theAnswer.value = ""
+        document.querySelector("#answer").style = "display:none"
+    }
 
-   
+
+
+
 
 })
 
@@ -131,15 +137,7 @@ document.querySelector("#theAnswer").addEventListener("click", function () {
     console.log(inGame)
 })
 
-close.addEventListener("click", function () {
-    inGame = true
-    document.querySelector("#answer").style = "display:none"
-    theAnswer.value = ""
-    console.log(inGame)
 
-})
-
-console.log("ingame : " + inGame)
 
 
 
