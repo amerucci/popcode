@@ -10,6 +10,7 @@ var inGame = false
 var isTyping = false
 var theAnswer = document.querySelector("#theAnswer")
 var close = document.querySelector("#close")
+var languageFound = document.querySelector(".languageFound")
 let languages = [
     "Javascript",
     "HTML",
@@ -42,9 +43,11 @@ let scoreFind = document.querySelector(".scoreFind")
 let scoreErrorOne = document.querySelector(".scoreErrorOne")
 let scoreErrorTwo = document.querySelector(".scoreErrorTwo")
 let scoreErrorThree = document.querySelector(".scoreErrorThree")
+let zoomProgress = document.querySelector(".zoomProgress")
 
 let founded = 0
 let errors =0
+
 
 window.addEventListener("load", function() {
     scoreFind.innerHTML = founded
@@ -156,16 +159,15 @@ window.addEventListener("keydown", function (event) {
         theAnswer.value = ""
         document.querySelector("#answer").style = "display:none"
     }
-
-
-
-
-
 })
 
 document.querySelector("#theAnswer").addEventListener("click", function () {
     inGame = false
     console.log(inGame)
+})
+
+languageFound.addEventListener("click", function(){
+    document.querySelector("#answer").style = "display:flex"
 })
 
 
@@ -667,6 +669,8 @@ function zoom(classNames = {}, settings = {}) {
     }
 
     function wheel(e) {
+        zoomProgress.style="width:"+(targetScale*10)+"%"
+        console.log(targetScale)
         /* Initialize selectors */
         $container = this;
         $element = this.children[0];
@@ -820,3 +824,4 @@ function removeClass($element, targetClass) {
 
     $element.className = $element.className.replace(rgx, "");
 }
+
