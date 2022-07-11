@@ -39,6 +39,7 @@ let languages = [
     "Clojure",
     "WebAssembly"
 ]
+var languageFrounded = []
 let scoreFind = document.querySelector(".scoreFind")
 let scoreErrorOne = document.querySelector(".scoreErrorOne")
 let scoreErrorTwo = document.querySelector(".scoreErrorTwo")
@@ -88,6 +89,7 @@ function checkLanguage() {
     let find = false
     for (var i = 0; i < languages.length; i++) {
         if (language.toLowerCase().replace("é", "e") === languages[i].toLowerCase().replace("é", "e")) {
+            languageFrounded.push(language.toLowerCase().replace("é", "e"))
             find = true
             break
         } else {
@@ -97,6 +99,7 @@ function checkLanguage() {
     if (find === true) {
         console.log('success')
         founded +=1
+        
         scoreFind.innerHTML = founded
     } else {
         errors +=1
@@ -158,6 +161,7 @@ window.addEventListener("keydown", function (event) {
         inGame = true
         theAnswer.value = ""
         document.querySelector("#answer").style = "display:none"
+        document.querySelector("#languageFounded").style = "display:none"
     }
 })
 
@@ -167,8 +171,12 @@ document.querySelector("#theAnswer").addEventListener("click", function () {
 })
 
 languageFound.addEventListener("click", function(){
-    document.querySelector("#answer").style = "display:flex"
+    document.querySelector("#languageFounded").style = "display:flex"
+    document.querySelector(".languageFoundedText").innerHTML = languageFrounded.join(" - ")
+    console.log(languageFrounded)
 })
+
+
 
 
 

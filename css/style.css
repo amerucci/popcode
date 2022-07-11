@@ -232,7 +232,7 @@ button#startGame {
  * ANSWER PART *
  ***************/
 
- #answer{
+ #answer, #languageFounded{
   position:absolute;
   background: rgba(0, 0, 0, 0.7);
   width:100vw;
@@ -265,6 +265,7 @@ button#startGame {
   letter-spacing: 5px;
   margin-top: 50px;
   font-family: 'gothambook';
+  text-transform: uppercase;
 }
 
 #theAnswer:focus-visible {
@@ -470,4 +471,14 @@ body {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   margin-right: 8px;
+}
+
+.languageFoundedText{
+  font-size: 80px;
+  color: #fff;
+  border: none;
+  background: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  padding:1%;
 }
