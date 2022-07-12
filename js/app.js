@@ -12,32 +12,33 @@ var theAnswer = document.querySelector("#theAnswer")
 var close = document.querySelector("#close")
 var languageFound = document.querySelector(".languageFound")
 let languages = [
-    "Javascript",
-    "HTML",
-    "CSS",
-    "Python",
-    "Java",
-    "Bash",
-    "Powershell",
+    "javascript",
+    "html",
+    "css",
+    "python",
+    "java",
+    "bash",
+    "powershell",
     "c#",
-    "PHP",
+    "php",
     "c++",
-    "TypeScript",
-    "C",
-    "Ruby",
-    "Go",
-    "Assembly",
-    "Swift",
-    "Kotlin",
-    "R",
-    "VBA",
-    "Objective-c",
-    "Scala",
-    "Rust",
-    "Dart",
-    "Elixir",
-    "Clojure",
-    "WebAssembly"
+    "typescript",
+    "c",
+    "ruby",
+    "go",
+    "assembly",
+    "swift",
+    "kotlin",
+    "r",
+    "vba",
+    "objective-c",
+    "scala",
+    "rust",
+    "dart",
+    "elixir",
+    "clojure",
+    "Webassembly",
+    "sql"
 ]
 var languageFrounded = []
 let scoreFind = document.querySelector(".scoreFind")
@@ -89,39 +90,21 @@ function checkLanguage() {
     let language = theAnswer.value
     let find = false
     let alreadyFounded = false
-    for (var i = 0; i < languages.length; i++) {
-        if (language.toLowerCase().replace("é", "e") === languages[i].toLowerCase().replace("é", "e")) {
-            
-            
-        let existinarray = language.toLowerCase().replace("é", "e").indexOf(languageFrounded[i]);
-           console.log(existinarray)
-
-            if(existinarray == -1){
-                console.log(existinarray)
-                languageFrounded.push(language.toLowerCase().replace("é", "e"))
-                find = true
-                alreadyFounded=false
-               break
-                
-            }
-
-            else{
-                //console.log(languageFrounded)
-                find = true
-                alreadyFounded=true
-               break
-                
-            }
-
-
-          
-            
-        } 
-        
-        else {
-            find = false
-        }
-       
+    if(languages.indexOf(language.toLowerCase().replace("é", "e"))=== -1) {
+        console.log("n'est pas dans le tableau")
+        find = false
+    }
+    else{
+        console.log(language+" est dans le tableau")
+                if(languageFrounded.indexOf(language)=== -1){
+                    languageFrounded.push(language.toLowerCase().replace("é", "e"))
+                    find = true
+                    alreadyFounded=false                
+                }
+                else{
+                    find = true
+                    alreadyFounded=true
+             }
     }
     if (find === true && alreadyFounded===false) {
        
@@ -131,7 +114,7 @@ function checkLanguage() {
         scoreFind.innerHTML = founded
     } 
     else if (find===true && alreadyFounded === true ){
-        alert("toto")
+       document.querySelector("#aleradyFounded").style ="display:flex"
     }
     else {
         errors += 1
@@ -149,7 +132,7 @@ function checkLanguage() {
         console.log('loupé - ' + errors + 'commises')
     }
     console.log(languageFrounded)
-    return languageFrounded;
+ 
 }
 
 //ACTIONS
@@ -161,7 +144,7 @@ startGame.addEventListener("click", enterGame);
 //ANSWER SECTION
 
 window.addEventListener("keydown", function (event) {
-    var keysAllowed = "abcdefghijklmnopqrstuvwxyz+"
+    var keysAllowed = "abcdefghijklmnopqrstuvwxyz+-#"
     var key = event.key
     console.log(key)
 
@@ -187,6 +170,11 @@ window.addEventListener("keydown", function (event) {
         theAnswer.focus()
     }
 
+      //CORRECT ANSWER
+      if (key == "Meta") {
+        console.log(languageFrounded)
+    }
+
     //ESCAPE ANSWER SECTION
     if (key == "Escape") {
         inGame = true
@@ -203,5 +191,12 @@ document.querySelector("#theAnswer").addEventListener("click", function () {
 
 languageFound.addEventListener("click", function () {
     document.querySelector("#languageFounded").style = "display:flex"
-    document.querySelector(".languageFoundedText").innerHTML = languageFrounded.join(" - ")
+    console.log(languageFrounded.length)
+    if(languageFrounded.length == 0){
+        document.querySelector(".languageFoundedText").innerHTML = "Aucun langage trouvé"
+    }
+    else{
+
+        document.querySelector(".languageFoundedText").innerHTML = languageFrounded.join(" - ")
+    }
 })
