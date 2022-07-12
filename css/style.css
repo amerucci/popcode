@@ -232,7 +232,7 @@ button#startGame {
  * ANSWER PART *
  ***************/
 
- #answer, #languageFounded{
+ #answer, #languageFounded, #aleradyFounded{
   position:absolute;
   background: rgba(0, 0, 0, 0.7);
   width:100vw;

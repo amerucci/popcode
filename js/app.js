@@ -181,6 +181,7 @@ window.addEventListener("keydown", function (event) {
         theAnswer.value = ""
         document.querySelector("#answer").style = "display:none"
         document.querySelector("#languageFounded").style = "display:none"
+        document.querySelector("#aleradyFounded").style = "display:none"
     }
 })
 
