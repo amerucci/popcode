@@ -79,6 +79,13 @@ function showContent() {
     instructions.style.display = "flex";
 }
 
+
+
+function hideAlreadyFind() {
+    document.querySelector("#aleradyFounded").style = "display:none"
+
+}
+
 function enterGame() {
     loader.style.display = "none"
     game.style.display = "flex"
@@ -90,33 +97,27 @@ function checkLanguage() {
     let language = theAnswer.value
     let find = false
     let alreadyFounded = false
-    if(languages.indexOf(language.toLowerCase().replace("é", "e"))=== -1) {
+    if (languages.indexOf(language.toLowerCase().replace("é", "e")) === -1) {
         console.log("n'est pas dans le tableau")
         find = false
+    } else {
+        console.log(language + " est dans le tableau")
+        if (languageFrounded.indexOf(language) === -1) {
+            languageFrounded.push(language.toLowerCase().replace("é", "e"))
+            find = true
+            alreadyFounded = false
+        } else {
+            find = true
+            alreadyFounded = true
+        }
     }
-    else{
-        console.log(language+" est dans le tableau")
-                if(languageFrounded.indexOf(language)=== -1){
-                    languageFrounded.push(language.toLowerCase().replace("é", "e"))
-                    find = true
-                    alreadyFounded=false                
-                }
-                else{
-                    find = true
-                    alreadyFounded=true
-             }
-    }
-    if (find === true && alreadyFounded===false) {
-       
-
+    if (find === true && alreadyFounded === false) {
         founded += 1
-      
         scoreFind.innerHTML = founded
-    } 
-    else if (find===true && alreadyFounded === true ){
-       document.querySelector("#aleradyFounded").style ="display:flex"
-    }
-    else {
+    } else if (find === true && alreadyFounded === true) {
+        document.querySelector("#aleradyFounded").style = "display:flex"
+        setTimeout(hideAlreadyFind, 1000);
+    } else {
         errors += 1
         switch (errors) {
             case 1:
@@ -132,7 +133,7 @@ function checkLanguage() {
         console.log('loupé - ' + errors + 'commises')
     }
     console.log(languageFrounded)
- 
+
 }
 
 //ACTIONS
@@ -170,8 +171,8 @@ window.addEventListener("keydown", function (event) {
         theAnswer.focus()
     }
 
-      //CORRECT ANSWER
-      if (key == "Meta") {
+    //CORRECT ANSWER
+    if (key == "Meta") {
         console.log(languageFrounded)
     }
 
@@ -193,10 +194,9 @@ document.querySelector("#theAnswer").addEventListener("click", function () {
 languageFound.addEventListener("click", function () {
     document.querySelector("#languageFounded").style = "display:flex"
     console.log(languageFrounded.length)
-    if(languageFrounded.length == 0){
+    if (languageFrounded.length == 0) {
         document.querySelector(".languageFoundedText").innerHTML = "Aucun langage trouvé"
-    }
-    else{
+    } else {
 
         document.querySelector(".languageFoundedText").innerHTML = languageFrounded.join(" - ")
     }
