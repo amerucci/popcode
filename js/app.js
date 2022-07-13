@@ -114,9 +114,11 @@ function checkLanguage() {
     if (find === true && alreadyFounded === false) {
         founded += 1
         scoreFind.innerHTML = founded
+        document.querySelector("#explaination").style="display:block"
+        document.querySelector(".explainationTitle").innerHTML=language
     } else if (find === true && alreadyFounded === true) {
         document.querySelector("#aleradyFounded").style = "display:flex"
-        setTimeout(hideAlreadyFind, 1000);
+        setTimeout(hideAlreadyFind, 800);
     } else {
         errors += 1
         switch (errors) {
