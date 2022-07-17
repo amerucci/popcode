@@ -97,8 +97,21 @@ async function getDescription(){
     let response = await fetch("./js/languages.json")
     if (response.ok){
         let data = await response.json()
-        console.log(data.languages.langage[0].description)
-        document.querySelector(".explainationText").innerHTML = data.languages.langage[0].description
+        //console.log(data.languages.langage)
+        const index = data.languages.langage.findIndex(object => {
+            return object.name === theAnswer.value.toLowerCase().replace("é", "e");
+          });
+
+       
+        console.log(data.languages.langage[index].description)
+        document.querySelector(".explainationTitle").innerHTML = data.languages.langage[index].name
+        document.querySelector(".explainationText").innerHTML = data.languages.langage[index].description
+        document.querySelector(".explainationPicture").innerHTML = "<img src='"+data.languages.langage[index].picture
+        +"' />"
+
+  theAnswer.value = ""
+
+
     }else{
         console.log("c'est de la merde")
     }
@@ -179,7 +192,7 @@ window.addEventListener("keydown", function (event) {
         document.querySelector("#answer").style = "display:flex"
         inGame = true
         checkLanguage()
-        theAnswer.value = ""
+        //theAnswer.value = ""
         document.querySelector("#answer").style = "display:none"
     }
 
