@@ -37,7 +37,7 @@ let languages = [
     "dart",
     "elixir",
     "clojure",
-    "Webassembly",
+    "webassembly",
     "sql"
 ]
 var languageFrounded = []
