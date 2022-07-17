@@ -103,7 +103,7 @@
         },
         {
           "name": "rust",
-          "description": ""
+          "description": "Rust est un langage de programmation compilé multi-paradigme conçu et développé par Mozilla Research depuis 2010. Il a été conçu pour être « un langage fiable, concurrent, pratique » supportant les styles de programmation purement fonctionnel, modèle d'acteur, procédural, ainsi qu'orienté objet sous certains aspects.En 2020, ses domaines de prédilection sont la programmation système, les applications en ligne de commande, les applications Web via WebAssembly, les services réseaux et les systèmes embarqués.Du fait de la politique de Mozilla, Rust est entièrement développé de façon ouverte (les ingénieurs de Mozilla Research publient leurs idées et les décisions prises lors des réunions) et sollicite les remarques et contributions de la communauté. La conception du langage est graduellement améliorée au travers des retours de l'équipe travaillant sur le moteur de rendu Servo et de façon pragmatique lors de l'écriture du compilateur. Bien que le projet soit financé par Mozilla, la majorité des contributions proviennent de la communauté."
          
         },
         {
