@@ -47,6 +47,7 @@ let scoreErrorTwo = document.querySelector(".scoreErrorTwo")
 let scoreErrorThree = document.querySelector(".scoreErrorThree")
 let zoomProgress = document.querySelector(".zoomProgress")
 
+
 let founded = 0
 let errors = 0
 
@@ -92,6 +93,21 @@ function enterGame() {
     inGame = true
 }
 
+async function getDescription(){
+    let response = await fetch("./js/languages.json")
+    if (response.ok){
+        let data = await response.json()
+        console.log(data.languages.langage[0].description)
+        document.querySelector(".explainationText").innerHTML = data.languages.langage[0].description
+    }else{
+        console.log("c'est de la merde")
+    }
+   
+      
+
+
+}
+
 function checkLanguage() {
     console.log(languageFrounded)
     let language = theAnswer.value
@@ -114,8 +130,9 @@ function checkLanguage() {
     if (find === true && alreadyFounded === false) {
         founded += 1
         scoreFind.innerHTML = founded
-        document.querySelector("#explaination").style="display:block"
+        document.querySelector("#explaination").style="display:flex"
         document.querySelector(".explainationTitle").innerHTML=language
+        getDescription()
     } else if (find === true && alreadyFounded === true) {
         document.querySelector("#aleradyFounded").style = "display:flex"
         setTimeout(hideAlreadyFind, 800);
@@ -185,6 +202,7 @@ window.addEventListener("keydown", function (event) {
         document.querySelector("#answer").style = "display:none"
         document.querySelector("#languageFounded").style = "display:none"
         document.querySelector("#aleradyFounded").style = "display:none"
+        document.querySelector("#explaination").style="display:none"
     }
 })
 

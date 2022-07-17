@@ -486,3 +486,9 @@ body {
 /****************
  * EXPLAINATION *
  ****************/
+
+ #explaination{
+  align-items: flex-start;
+  color: #FFF;
+  padding-left:10%;
+ }
