@@ -77,8 +77,8 @@
          
         },
         {
-          "name": "",
-          "description": ""
+          "name": "swift",
+          "description": "Swift (langage d'Apple) est un langage de programmation objet compilé, multi-paradigmes, qui se veut simple, performant et sûr. Il est développé en open source.Le projet de développement de Swift est géré par Apple, qui en est également le principal contributeur ; mais de nombreux membres de la communauté Swift, ainsi que d'autres acteurs, tels que Google et IBM, participent également à son développement. Swift est officiellement supporté sur les systèmes d'exploitation Ubuntu, iOS, macOS, watchOS et tvOS. Un support non officiel (géré par la communauté) existe pour d'autres plateformes Linux, telles que Debian et Fedora.Un manuel officiel en anglais est disponible en ligne.Swift dispose d'une interopérabilité avec le langage C ainsi qu'avec l'Objective-C sur les plateformes d'Apple.Le compilateur de Swift utilise LLVM pour la génération du code machine."
          
         },
         {
