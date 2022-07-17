@@ -106,8 +106,7 @@ async function getDescription(){
         console.log(data.languages.langage[index].description)
         document.querySelector(".explainationTitle").innerHTML = data.languages.langage[index].name
         document.querySelector(".explainationText").innerHTML = data.languages.langage[index].description
-        document.querySelector(".explainationPicture").innerHTML = "<img src='"+data.languages.langage[index].picture
-        +"' />"
+        document.querySelector(".explainationPicture").innerHTML = "<img src='./img/logos/"+theAnswer.value.toLowerCase().replace("é", "e")+".png' />"
 
   theAnswer.value = ""
 
