@@ -87,8 +87,8 @@
          
         },
         {
-          "name": "",
-          "description": ""
+          "name": "r",
+          "description": "R est un langage de programmation et un logiciel libre destiné aux statistiques et à la science des données soutenu par la R Foundation for Statistical Computing. Il fait partie de la liste des paquets GNU et est écrit en C, Fortran et R.GNU R est un logiciel libre distribué selon les termes de la licence GNU GPL. Le site officiel fournit des binaires pour Linux, Windows et macOS, et des portages existent pour d'autres systèmes d'exploitation.Le langage R est largement utilisé par les statisticiens, les data miners, data scientists pour le développement de logiciels statistiques et l'analyse des données.En janvier 2022, R est classé 12e dans l'index TIOBE qui mesure la popularité des langages de programmation."
          
         },
         {
