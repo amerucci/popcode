@@ -92,42 +92,42 @@
          
         },
         {
-          "name": "",
+          "name": "vba",
+          "description": "Visual Basic for Applications (VBA) est une implémentation de Microsoft Visual Basic qui est intégrée dans toutes les applications de Microsoft Office, dans quelques autres applications Microsoft comme Visio et au moins partiellement dans quelques autres applications comme AutoCAD, WordPerfect, MicroStation, Solidworks ou encore ArcGIS. Il remplace et étend les capacités des langages macro spécifiques aux plus anciennes applications comme le langage WordBasic intégré à une ancienne version du logiciel Word, et peut être utilisé pour contrôler la quasi-totalité de l'IHM des applications hôtes, ce qui inclut la possibilité de manipuler les fonctionnalités de l'interface utilisateur comme les menus, et de personnaliser les boîtes de dialogue et les formulaires utilisateurs.Comme son nom l'indique, VBA est très lié à Visual Basic (les syntaxes et concepts des deux langages se ressemblent), mais ne peut normalement qu'exécuter du code dans une application hôte Microsoft Office (et non pas d'une application autonome, il requiert donc une licence de la suite bureautique Microsoft). Il peut cependant être utilisé pour contrôler une application à partir d'une autre (par exemple, créer automatiquement un document Word à partir de données Excel). Le code ainsi exécuté est stocké dans des instances de documents, on l'appelle également macro.VBA est fonctionnellement riche et extrêmement flexible, mais il possède d'importantes limitations, comme son support limité des fonctions de rappel (callbacks), ainsi qu'une gestion des erreurs archaïque, utilisation de handlers d'erreurs en lieu et place d'un mécanisme d'exceptions.Même si ces limitations rendent ce langage très peu utilisé par les développeurs informaticiens soucieux d'utiliser des outils avant tout performants, sa simplicité et sa facilité d'accès ont séduit certaines professions, notamment dans la finance."
+         
+        },
+        {
+          "name": "scala",
           "description": ""
          
         },
         {
-          "name": "",
+          "name": "rust",
           "description": ""
          
         },
         {
-          "name": "",
+          "name": "dart",
           "description": ""
          
         },
         {
-          "name": "",
+          "name": "elixir",
           "description": ""
          
         },
         {
-          "name": "",
+          "name": "clojure",
           "description": ""
          
         },
         {
-          "name": "",
+          "name": "Webassembly",
           "description": ""
          
         },
         {
-          "name": "",
-          "description": ""
-         
-        },
-        {
-          "name": "",
+          "name": "sql",
           "description": ""
          
         }
