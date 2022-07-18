@@ -177,7 +177,14 @@ function checkLanguage() {
     }
     if (find === true && alreadyFounded === false) {
         founded += 1
-        scoreFind.innerHTML = founded
+        if(founded <10){
+            scoreFind.innerHTML = "0"+founded  
+        }
+        else{
+            scoreFind.innerHTML = founded  
+        }
+
+       
         document.querySelector("#explaination").style = "display:flex"
         document.querySelector(".explainationTitle").innerHTML = language
         getDescription()
@@ -308,6 +315,8 @@ closeBtn.forEach(btn => {
     })
 });
 
+// CHECKBOX
+
 checkBox.addEventListener('change', function() {
     if (this.checked) {
         checked = true
@@ -317,3 +326,19 @@ checkBox.addEventListener('change', function() {
       console.log("Checkbox is not checked..");
     }
   });
+
+// CURSOR
+
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', e => {
+    cursor.setAttribute('style', 'top:'+(e.pageY - 20)+"px; left:"+(e.pageX - 20)+"px;")
+})
+
+document.addEventListener('click', ()=>{
+    cursor.classList.add('expand');
+
+    setTimeout(()=>{
+        cursor.classList.remove("expand");
+    }, 500);
+})
