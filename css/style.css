@@ -2,7 +2,7 @@
 @font-face { font-family: gothammedium; src: url("../fonts/gothammedium-webfont.woff2") format("woff2"), url("../fonts/gothammedium-webfont.woff") format("woff"); font-weight: normal; font-style: normal; }
 @font-face { font-family: gothambook; src: url("../fonts/gothambook-webfont.woff2") format("woff2"), url("../fonts/gothambook-webfont.woff") format("woff"); font-weight: normal; font-style: normal; }
 body { padding: 0px; margin: 0px; font-size: 12px; font-family: gothammedium; overflow: hidden; }
-.legals { position: absolute; bottom: 20px; right: 20px; z-index: 2; }
+.legals { position: absolute; bottom: 34px; right: 20px; z-index: 2; }
 .legals span { color: rgb(255, 255, 255); text-decoration: none; position: relative; margin-left: 25px;  }
 .legals span::before { color: rgb(255, 255, 255); text-decoration: none; width: 0px; bottom: -10px; content: ""; height: 2px; background: rgb(255, 255, 255); position: absolute; left: 50%; transform: translateX(-50%); transition: width 500ms ease-in-out 0s; }
 .legals span:hover::before { width: 100%; }
@@ -33,7 +33,7 @@ button#startGame {border: none;background: transparent;color: rgb(255, 170, 255)
 #game .zoom { background-color: rgb(221, 221, 221); height: 100%; margin: auto; overflow: hidden; width: 100%; }
 #game .zoom .media { inset: 0px; display: block; margin: auto; width: 100%; position: absolute; transform-style: preserve-3d; }
 .transition { transition: transform 200ms ease 0s; }
-#answer, #languageFounded, #aleradyFounded, #explaination, #legals { position: absolute; background: rgba(0, 0, 0, 0.7); width: 100vw; height: 100vh; top: 0px; z-index: 2; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+#answer, #languageFounded, #aleradyFounded, #explaination, #legals, #youLose, #youWin { position: absolute; background: rgba(0, 0, 0, 0.7); width: 100vw; height: 100vh; top: 0px; z-index: 2; display: flex; justify-content: center; align-items: center; flex-direction: column; }
 #theAnswer { font-size: 80px; color: rgb(255, 255, 255); border: none; background: transparent; text-align: center; text-transform: uppercase; }
 #close { color: rgb(255, 255, 255); }
 .theAnswerInstruction { color: rgb(255, 255, 255); letter-spacing: 5px; margin-top: 50px; font-family: gothambook; text-transform: uppercase; }

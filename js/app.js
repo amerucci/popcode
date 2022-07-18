@@ -184,6 +184,10 @@ function checkLanguage() {
             scoreFind.innerHTML = founded  
         }
 
+        if(founded == 2){
+            document.querySelector("#youWin").style="display:flex"
+            inGame = false
+        }
        
         document.querySelector("#explaination").style = "display:flex"
         document.querySelector(".explainationTitle").innerHTML = language
@@ -206,6 +210,7 @@ function checkLanguage() {
                 break
             case 3:
                 scoreErrorThree.style = "color:#0AEFF7"
+                document.querySelector("#youLose").style="display:flex"
                 break
         }
         console.log('loupé - ' + errors + 'commises')
