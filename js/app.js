@@ -93,31 +93,61 @@ function enterGame() {
     inGame = true
 }
 
-async function getDescription(){
+async function getDescription() {
     let response = await fetch("./js/languages.json")
-    if (response.ok){
+    if (response.ok) {
         let data = await response.json()
         //console.log(data.languages.langage)
         const index = data.languages.langage.findIndex(object => {
             return object.name === theAnswer.value.toLowerCase().replace("é", "e");
-          });
+        });
 
-       
+
         console.log(data.languages.langage[index].description)
         document.querySelector(".explainationTitle").innerHTML = data.languages.langage[index].name
         document.querySelector(".explainationText").innerHTML = data.languages.langage[index].description
-        document.querySelector(".explainationPicture").innerHTML = "<img src='"+data.languages.langage[index].picture+"' />"
+        document.querySelector(".explainationPicture").innerHTML = "<img src='" + data.languages.langage[index].picture + "' />"
 
-  theAnswer.value = ""
+        theAnswer.value = ""
 
 
+    } else {
+        console.log("error")
+    }
+}
+
+/**********************
+ * FUNCTION GETLEGALS *
+ **********************/
+
+ async function getLegals(){
+    let response = await fetch("./js/languages.json")
+    if (response.ok){
+        let data = await response.json()
+       let explainationTitle =  document.querySelectorAll(".explainationTitle")
+       let explainationText =  document.querySelectorAll(".explainationText")
+       explainationTitle[1].innerHTML = data.legals.legal[0].title
+       explainationText[1].innerHTML = data.legals.legal[0].content
     }else{
         console.log("error")
     }
-   
-      
+}
 
+/****************************
+ * FUNCTION GETCONFIDENTIAL *
+ ****************************/
 
+async function getConfidential(){
+    let response = await fetch("./js/languages.json")
+    if (response.ok){
+        let data = await response.json()
+       let explainationTitle =  document.querySelectorAll(".explainationTitle")
+       let explainationText =  document.querySelectorAll(".explainationText")
+       explainationTitle[1].innerHTML = data.legals.confidential[0].title
+       explainationText[1].innerHTML = data.legals.confidential[0].content
+    }else{
+        console.log("error")
+    }
 }
 
 function checkLanguage() {
@@ -142,8 +172,8 @@ function checkLanguage() {
     if (find === true && alreadyFounded === false) {
         founded += 1
         scoreFind.innerHTML = founded
-        document.querySelector("#explaination").style="display:flex"
-        document.querySelector(".explainationTitle").innerHTML=language
+        document.querySelector("#explaination").style = "display:flex"
+        document.querySelector(".explainationTitle").innerHTML = language
         getDescription()
     } else if (find === true && alreadyFounded === true) {
         document.querySelector("#aleradyFounded").style = "display:flex"
@@ -214,19 +244,24 @@ window.addEventListener("keydown", function (event) {
         document.querySelector("#answer").style = "display:none"
         document.querySelector("#languageFounded").style = "display:none"
         document.querySelector("#aleradyFounded").style = "display:none"
-        document.querySelector("#explaination").style="display:none"
+        document.querySelector("#explaination").style = "display:none"
+        document.querySelector("#legals").style = "display:none"
     }
 
     //BUTTON CLOSE
-    document.querySelector(".closeBtn").addEventListener("click", function(){
-        document.querySelector("#explaination").style="display:none"  
+    document.querySelector(".closeBtn").addEventListener("click", function () {
+        document.querySelector("#explaination").style = "display:none"
+        document.querySelector("#legals").style = "display:none"
+    
     })
+
 })
 
 document.querySelector("#theAnswer").addEventListener("click", function () {
     inGame = false
     console.log(inGame)
 })
+
 
 languageFound.addEventListener("click", function () {
     document.querySelector("#languageFounded").style = "display:flex"
@@ -237,4 +272,17 @@ languageFound.addEventListener("click", function () {
 
         document.querySelector(".languageFoundedText").innerHTML = languageFrounded.join(" - ")
     }
+})
+
+
+//LEGALS CLICK
+document.querySelector(".legal").addEventListener('click', function () {
+    document.querySelector("#legals").style = "display:flex"
+    getLegals()
+})
+
+//CONFIDENT CLICK
+document.querySelector(".confident").addEventListener('click', function () {
+    document.querySelector("#legals").style = "display:flex"
+    getConfidential()()
 })

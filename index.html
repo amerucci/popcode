@@ -12,8 +12,8 @@
 <body>
 
     <div class="legals">
-        <a href="#">Mentions légales</a>
-        <a href="#">Politique de confidentialité</a>
+        <span class="legal">Mentions légales</span>
+        <span class="confident">Politique de confidentialité</span>
     </div>
     <section id="loader">
         <div class="loaderelm">
@@ -466,9 +466,24 @@
                 <span class="closeBtnLeft"></span>
                 <span class="closeBtnRight"></span>
             </div>
-            <p class="explainationTitle">explainationTitle</p>
-            <div class="explainationPicture">explainationPicture</div>
-            <div class="explainationText">explainationText</div>
+            <p class="explainationTitle"></p>
+            <div class="explainationPicture"></div>
+            <div class="explainationText"></div>
+            
+            <label for="subscribeNews">Fermer automatiquement cette fenetre</label>
+            <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+        </div>
+    </section>
+
+    <section id="legals" style="display:none">
+        <div class="explainationBox">
+            <div class="closeBtn">
+                <span class="closeBtnLeft"></span>
+                <span class="closeBtnRight"></span>
+            </div>
+            <p class="explainationTitle"></p>
+     
+            <div class="explainationText"></div>
         </div>
         
       
