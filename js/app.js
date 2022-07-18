@@ -46,7 +46,8 @@ let scoreErrorOne = document.querySelector(".scoreErrorOne")
 let scoreErrorTwo = document.querySelector(".scoreErrorTwo")
 let scoreErrorThree = document.querySelector(".scoreErrorThree")
 let zoomProgress = document.querySelector(".zoomProgress")
-
+let checkBox = document.querySelector("#autocloseLabelCheckBox")
+let checked = false;
 
 let founded = 0
 let errors = 0
@@ -84,7 +85,12 @@ function showContent() {
 
 function hideAlreadyFind() {
     document.querySelector("#aleradyFounded").style = "display:none"
+    theAnswer.value = ""
+}
 
+function autoHide() {
+    document.querySelector("#explaination").style = "display:none"
+    theAnswer.value = ""
 }
 
 function enterGame() {
@@ -120,15 +126,15 @@ async function getDescription() {
  * FUNCTION GETLEGALS *
  **********************/
 
- async function getLegals(){
+async function getLegals() {
     let response = await fetch("./js/languages.json")
-    if (response.ok){
+    if (response.ok) {
         let data = await response.json()
-       let explainationTitle =  document.querySelectorAll(".explainationTitle")
-       let explainationText =  document.querySelectorAll(".explainationText")
-       explainationTitle[1].innerHTML = data.legals.legal[0].title
-       explainationText[1].innerHTML = data.legals.legal[0].content
-    }else{
+        let explainationTitle = document.querySelectorAll(".explainationTitle")
+        let explainationText = document.querySelectorAll(".explainationText")
+        explainationTitle[1].innerHTML = data.legals.legal[0].title
+        explainationText[1].innerHTML = data.legals.legal[0].content
+    } else {
         console.log("error")
     }
 }
@@ -137,15 +143,15 @@ async function getDescription() {
  * FUNCTION GETCONFIDENTIAL *
  ****************************/
 
-async function getConfidential(){
+async function getConfidential() {
     let response = await fetch("./js/languages.json")
-    if (response.ok){
+    if (response.ok) {
         let data = await response.json()
-       let explainationTitle =  document.querySelectorAll(".explainationTitle")
-       let explainationText =  document.querySelectorAll(".explainationText")
-       explainationTitle[1].innerHTML = data.legals.confidential[0].title
-       explainationText[1].innerHTML = data.legals.confidential[0].content
-    }else{
+        let explainationTitle = document.querySelectorAll(".explainationTitle")
+        let explainationText = document.querySelectorAll(".explainationText")
+        explainationTitle[1].innerHTML = data.legals.confidential[0].title
+        explainationText[1].innerHTML = data.legals.confidential[0].content
+    } else {
         console.log("error")
     }
 }
@@ -175,10 +181,14 @@ function checkLanguage() {
         document.querySelector("#explaination").style = "display:flex"
         document.querySelector(".explainationTitle").innerHTML = language
         getDescription()
+        if(checked == true){
+           autoHide()
+        }
     } else if (find === true && alreadyFounded === true) {
         document.querySelector("#aleradyFounded").style = "display:flex"
         setTimeout(hideAlreadyFind, 800);
     } else {
+        theAnswer.value = ""
         errors += 1
         switch (errors) {
             case 1:
@@ -248,12 +258,7 @@ window.addEventListener("keydown", function (event) {
         document.querySelector("#legals").style = "display:none"
     }
 
-    //BUTTON CLOSE
-    document.querySelector(".closeBtn").addEventListener("click", function () {
-        document.querySelector("#explaination").style = "display:none"
-        document.querySelector("#legals").style = "display:none"
-    
-    })
+
 
 })
 
@@ -286,3 +291,29 @@ document.querySelector(".confident").addEventListener('click', function () {
     document.querySelector("#legals").style = "display:flex"
     getConfidential()()
 })
+
+//BUTTON CLOSE
+let closeBtn = document.querySelectorAll(".closeBtn")
+closeBtn.forEach(btn => {
+    btn.addEventListener("click", function () {
+        document.querySelector("#explaination").style = "display:none"
+        document.querySelector("#legals").style = "display:none"
+        document.querySelector("#answer").style = "display:none"
+        document.querySelector("#languageFounded").style = "display:none"
+        document.querySelector("#aleradyFounded").style = "display:none"
+        theAnswer.value = ""
+
+  
+
+    })
+});
+
+checkBox.addEventListener('change', function() {
+    if (this.checked) {
+        checked = true
+       
+    } else {
+        checked = false
+      console.log("Checkbox is not checked..");
+    }
+  });

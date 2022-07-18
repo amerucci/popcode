@@ -446,41 +446,55 @@
     <section id="answer" style="display:none">
         <input type="text" id="theAnswer"></input>
         <p class="theAnswerInstruction">TAPE UN NOM DE LANGAGE DE PROGRAMMATION</p>
-        <div id="close">close</div>
+        <div class="closeBtn">
+            <span class="closeBtnLeft"></span>
+            <span class="closeBtnRight"></span>
+        </div>
     </section>
 
     <section id="languageFounded" style="display:none">
         <p class="languageFoundedText">Aucun langage trouvé</p>
         <p class="theAnswerInstruction">Voici tous les langages que tu as trouvé</p>
-        <div id="close">close</div>
+        <div class="closeBtn">
+            <span class="closeBtnLeft"></span>
+            <span class="closeBtnRight"></span>
+        </div>
     </section>
 
     <section id="aleradyFounded" style="display:none">
         <p class="languageFoundedText">Tu l'as déjà trouvé</p>
-        <div id="close">close</div>
+        <div class="closeBtn">
+            <span class="closeBtnLeft"></span>
+            <span class="closeBtnRight"></span>
+        </div>
     </section>
 
     <section id="explaination" style="display:none">
+        <div class="closeBtn">
+            <span class="closeBtnLeft"></span>
+            <span class="closeBtnRight"></span>
+        </div>
         <div class="explainationBox">
-            <div class="closeBtn">
-                <span class="closeBtnLeft"></span>
-                <span class="closeBtnRight"></span>
-            </div>
+           
             <p class="explainationTitle"></p>
             <div class="explainationPicture"></div>
             <div class="explainationText"></div>
             
-            <label for="subscribeNews">Fermer automatiquement cette fenetre</label>
-            <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+            <div class="autoClose">
+                <label for="autocloseLabel">Fermer automatiquement cette fenetre</label>
+                <input type="checkbox" id="autocloseLabelCheckBox" name="autocloseLabelCheckBox" value="autocloseLabel">
+            </div>
+           
         </div>
     </section>
 
     <section id="legals" style="display:none">
+        <div class="closeBtn">
+            <span class="closeBtnLeft"></span>
+            <span class="closeBtnRight"></span>
+        </div>
         <div class="explainationBox">
-            <div class="closeBtn">
-                <span class="closeBtnLeft"></span>
-                <span class="closeBtnRight"></span>
-            </div>
+            
             <p class="explainationTitle"></p>
      
             <div class="explainationText"></div>
