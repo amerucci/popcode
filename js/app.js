@@ -216,6 +216,11 @@ window.addEventListener("keydown", function (event) {
         document.querySelector("#aleradyFounded").style = "display:none"
         document.querySelector("#explaination").style="display:none"
     }
+
+    //BUTTON CLOSE
+    document.querySelector(".closeBtn").addEventListener("click", function(){
+        document.querySelector("#explaination").style="display:none"  
+    })
 })
 
 document.querySelector("#theAnswer").addEventListener("click", function () {
