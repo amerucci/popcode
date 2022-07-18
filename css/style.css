@@ -64,3 +64,6 @@ body { padding: 0px; margin: 0px; font-size: 12px; font-family: gothammedium; ov
 .explainationPicture {width: 100%;/* margin-right: 40px; */float: left;height: 40vh;max-width: 400px;}
 .explainationPicture img {object-fit: contain;width: 100%;height: 100%;height: 1;}
 .explainationText { color: rgb(255, 255, 255); max-width: 37vw; height: 40vh; overflow-y: auto; max-height: 457px; font-size: 13px; line-height: 20px; }
+.closeBtn{position: absolute;height: 56px;width: 56px;}
+.closeBtnLeft{background: #FFAAFF;transform: rotate(135deg); width:2px; height:56px;position: absolute;}
+.closeBtnRight{background: #FFAAFF;transform: rotate(45deg); width:2px; height:56px;position: absolute;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);-o-transform: rotate(45deg);}
