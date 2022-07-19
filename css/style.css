@@ -186,3 +186,17 @@ body {padding: 0px;margin: 0px;font-size: 12px;font-family: gothammedium;overflo
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+@media (max-width:1190px){
+  #game{display:none!important;}
+  .toSmall{display:block!important; color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 30px;
+    font-weight: lighter;
+    font-family: gothambook;
+    max-width: 240px}
+  .instructionContent{display:none;}
+  .instructionsNumber{display:none;}
+  #startGame{display:none;}
+}
