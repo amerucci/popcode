@@ -3,7 +3,9 @@
 @font-face { font-family: gothambook; src: url("../fonts/gothambook-webfont.woff2") format("woff2"), url("../fonts/gothambook-webfont.woff") format("woff"); font-weight: normal; font-style: normal; }
 body { padding: 0px; margin: 0px; font-size: 12px; font-family: gothammedium; overflow: hidden; }
 .legals { position: absolute; bottom: 34px; right: 20px; z-index: 2; }
-.legals span { color: rgb(255, 255, 255); text-decoration: none; position: relative; margin-left: 25px;  }
+.legals span { color: rgb(255, 255, 255); text-decoration: none; position: relative; margin-left: 25px; font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase; }
 .legals span::before { color: rgb(255, 255, 255); text-decoration: none; width: 0px; bottom: -10px; content: ""; height: 2px; background: rgb(255, 255, 255); position: absolute; left: 50%; transform: translateX(-50%); transition: width 500ms ease-in-out 0s; }
 .legals span:hover::before { width: 100%; }
 #loader { height: 100vh; width: 100vw; background: url("../img/fond.jpg") center center / cover; }
@@ -36,7 +38,7 @@ button#startGame, button.restartGame {border: none;background: transparent;color
 #answer, #languageFounded, #aleradyFounded, #explaination, #legals, #youLose, #youWin { position: absolute; background: rgba(0, 0, 0, 0.7); width: 100vw; height: 100vh; top: 0px; z-index: 2; display: flex; justify-content: center; align-items: center; flex-direction: column; }
 #theAnswer { font-size: 80px; color: rgb(255, 255, 255); border: none; background: transparent; text-align: center; text-transform: uppercase; }
 #close { color: rgb(255, 255, 255); }
-.theAnswerInstruction { color: rgb(255, 255, 255); letter-spacing: 5px; margin-top: 50px; font-family: gothambook; text-transform: uppercase; }
+.theAnswerInstruction {color: rgb(255, 255, 255);letter-spacing: 5px;margin-top: 50px;font-family: gothambook;text-transform: uppercase;text-align: center;}
 #theAnswer:focus-visible { color: rgb(255, 255, 255); border: none; background: transparent; outline: initial; }
 .score { position: absolute; z-index: 2; color: rgb(255, 255, 255); display: flex; left: 30px; top: 20px; }
 .scoreTxt { color: rgb(10, 239, 247); transform: rotate(-90deg); font-size: 8px; text-align: center; letter-spacing: 2px; text-transform: uppercase; position: relative; }
@@ -48,7 +50,7 @@ button#startGame, button.restartGame {border: none;background: transparent;color
 .logo img { width: 150px; height: 150px; }
 .zoomControls { position: absolute; left: -80px; bottom: 115px; display: flex; align-items: center; transform: rotate(-90deg); }
 .zoomControl { color: rgb(255, 255, 255); margin: 0px 10px; transform: rotate(-90deg); }
-feuille de style user-agent div { display: block; }
+div { display: block; }
 body {padding: 0px;margin: 0px;font-size: 12px;font-family: gothammedium;overflow: hidden;cursor: none;}
 .zoomText { color: rgb(10, 239, 247); text-transform: uppercase; font-size: 8px; letter-spacing: 2px; }
 .zoomBar { position: relative; width: 130px; height: 1px; overflow: hidden; }
@@ -199,4 +201,16 @@ body {padding: 0px;margin: 0px;font-size: 12px;font-family: gothammedium;overflo
   .instructionContent{display:none;}
   .instructionsNumber{display:none;}
   #startGame{display:none;}
+}
+
+p {
+  width: 100%;
+}
+
+strong{
+  color:#0aeff7
+}
+
+a{
+  color:#FFAAFF
 }

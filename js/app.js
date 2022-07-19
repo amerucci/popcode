@@ -73,6 +73,7 @@ function restartGame(){
     scoreErrorThree.style = "color:#FFF";
 
   document.querySelector("#explaination").style = "display:none";
+  checked = false;
 
 
 }
@@ -114,6 +115,7 @@ function enterGame() {
 }
 
 async function getDescription() {
+  inGame = false
   let response = await fetch("./js/languages.json");
   if (response.ok) {
     let data = await response.json();
@@ -141,6 +143,7 @@ async function getDescription() {
  **********************/
 
 async function getLegals() {
+  inGame = false
   let response = await fetch("./js/languages.json");
   if (response.ok) {
     let data = await response.json();
@@ -273,6 +276,7 @@ window.addEventListener("keydown", function (event) {
 
   //ESCAPE ANSWER SECTION
   if (key == "Escape") {
+
     inGame = true;
     theAnswer.value = "";
     document.querySelector("#answer").style = "display:none";
@@ -289,6 +293,7 @@ document.querySelector("#theAnswer").addEventListener("click", function () {
 });
 
 languageFound.addEventListener("click", function () {
+  inGame = false
   document.querySelector("#languageFounded").style = "display:flex";
   console.log(languageFrounded.length);
   if (languageFrounded.length == 0) {
@@ -306,16 +311,14 @@ document.querySelector(".legal").addEventListener("click", function () {
   getLegals();
 });
 
-//CONFIDENT CLICK
-document.querySelector(".confident").addEventListener("click", function () {
-  document.querySelector("#legals").style = "display:flex";
-  getConfidential()();
-});
+
 
 //BUTTON CLOSE
 let closeBtn = document.querySelectorAll(".closeBtn");
 closeBtn.forEach((btn) => {
+
   btn.addEventListener("click", function () {
+    inGame = true
     document.querySelector("#explaination").style = "display:none";
     document.querySelector("#legals").style = "display:none";
     document.querySelector("#answer").style = "display:none";
