@@ -240,7 +240,7 @@ function checkLanguage() {
 //ACTIONS
 
 window.onload = move;
-setTimeout(showContent, 0);
+setTimeout(showContent, 4000);
 startGame.addEventListener("click", enterGame);
 
 //ANSWER SECTION

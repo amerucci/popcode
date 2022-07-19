@@ -30,7 +30,7 @@ svg { width: 100%; }
 .instructions { text-align: center; display: flex; flex-flow: column nowrap; align-items: center; }
 .instructionsNumber { color: rgb(10, 239, 247); font-size: 150px; letter-spacing: -11px; font-family: gothambold; }
 .instructionContent { color: rgb(255, 255, 255); text-transform: uppercase; font-size: 13px; line-height: 30px; font-weight: lighter; font-family: gothambook; max-width: 240px; }
-button#startGame, button.restartGame {border: none;background: transparent;color: rgb(255, 170, 255);font-size: 10px;letter-spacing: 5px;margin-top: 30px;/* cursor: pointer; */}
+button#startGame, button.restartGame {border: none;background: transparent;color: rgb(255, 170, 255);font-size: 10px;letter-spacing: 5px;margin-top: 30px;cursor: none;}
 #game { height: 100vh; margin: 0px auto; max-width: 100%; width: 100vw; }
 #game .zoom { background-color: rgb(221, 221, 221); height: 100%; margin: auto; overflow: hidden; width: 100%; }
 #game .zoom .media { inset: 0px; display: block; margin: auto; width: 100%; position: absolute; transform-style: preserve-3d; }
