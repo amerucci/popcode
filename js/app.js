@@ -124,7 +124,7 @@ async function getDescription() {
       return object.name === theAnswer.value.toLowerCase().replace("é", "e");
     });
 
-    console.log(data.languages.langage[index].description);
+    console.log(data.languages.langage[index]);
     document.querySelector(".explainationTitle").innerHTML =
       data.languages.langage[index].name;
     document.querySelector(".explainationText").innerHTML =
@@ -202,7 +202,7 @@ function checkLanguage() {
 
     if (founded == 27) {
       document.querySelector("#youWin").style =
-        "display:flex;     background: rgba(0, 0, 0, 1);";
+        "display:flex;    background: url('./img/fond.jpg') center center / cover; ";
 
       inGame = false;
     }
@@ -229,7 +229,7 @@ function checkLanguage() {
       case 3:
         scoreErrorThree.style = "color:#0AEFF7";
         document.querySelector("#youLose").style =
-          "display:flex; background: rgba(0, 0, 0, 1)";
+          "display:flex; background: url('./img/fond.jpg') center center / cover;; ";
         break;
     }
     console.log("loupé - " + errors + "commises");
