@@ -293,7 +293,7 @@ document.querySelector("#theAnswer").addEventListener("click", function () {
 });
 
 languageFound.addEventListener("click", function () {
-  inGame = false
+  inGame = false 
   document.querySelector("#languageFounded").style = "display:flex";
   console.log(languageFrounded.length);
   if (languageFrounded.length == 0) {
