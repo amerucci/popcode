@@ -5,6 +5,7 @@ var loaderContenainer = document.querySelector(".loaderContenainer");
 var instructions = document.querySelector(".instructions");
 var loader = document.querySelector("#loader");
 var startGame = document.querySelector("#startGame");
+var reloadGameBtn = document.querySelector("#reloadGame");
 var game = document.querySelector("#game");
 var inGame = false;
 var isTyping = false;
@@ -127,6 +128,23 @@ function enterGame() {
   loader.style.display = "none";
   game.style.display = "flex";
   inGame = true; 
+}
+
+function reloadGame(){
+  loader.style.display = "none";
+  game.style.display = "flex";
+  inGame = true; 
+  let scoreFromStorage = localStorage.getItem('scrore');
+  let errorsFromStorage = localStorage.getItem('errors');
+  if (scoreFromStorage.length > 0) {
+    founded = parseInt(scoreFromStorage)
+    if (founded < 10) {
+      scoreFind.innerHTML = "0" + founded;
+    } else {
+      scoreFind.innerHTML = founded;
+    }
+  }
+
 }
 
 /*******************************************
@@ -306,6 +324,7 @@ window.onload = move;
 //LOADER DISEAPEAR
 setTimeout(showContent, 4000);
 startGame.addEventListener("click", enterGame);
+reloadGameBtn.addEventListener("click", reloadGame);
 
 //ANSWER SECTION
 
