@@ -126,7 +126,7 @@ function enterGame() {
   localStorage.clear();
   loader.style.display = "none";
   game.style.display = "flex";
-  inGame = true;
+  inGame = true; 
 }
 
 /*******************************************
