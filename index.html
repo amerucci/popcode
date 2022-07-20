@@ -524,10 +524,35 @@
         <button class="restartGame">CLIQUES POUR RECOMMENCER UNE PARTIE</button>
     </section>
 
+    <div id="cookieNotice" class="light display-right" style="display: none;">
+        <div id="closeIcon" style="display: none;">
+        </div>
+        <div class="title-wrap">
+            <h4>Blah blah blah Cookie !</h4>
+        </div>
+        <div class="content-wrap">
+            <div class="msg-wrap">
+                <p>Bon ok, ces cookies ne sont ni sucrés, ni chocolatés, ni moelleux mais on utilise quelques services pour mesurer notre audience. Et ça, ça vaut tous les cookies du monde.</p>
+                <div class="btn-wrap">
+                    <button class="btn-primary" onclick="refuseCookieConsent();">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./js/app.js"></script>
     <script src="./js/wheelzoom.js"></script>
+    <script src="./js/cookies.js"></script>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWKNYV187G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZWKNYV187G');
+</script>
 </body>
 
 </html>
