@@ -58,7 +58,12 @@ window.addEventListener("load", function () {
 
 //FUNCTIONS
 
+/******************************************************
+ * REINITIALIZE ALL THE VARIALES WHEN RESTARTING GAME *
+ ******************************************************/
+
 function restartGame(){
+  localStorage.clear();
     languageFrounded = [];
     founded = 0;
     errors = 0;
@@ -78,6 +83,10 @@ function restartGame(){
 
 }
 
+/*************************
+ * SCRIPT FOR THE LOADER *
+ *************************/
+
 function move() {
   var width = 1;
   var id = setInterval(frame, 33);
@@ -92,6 +101,10 @@ function move() {
     }
   }
 }
+
+/***********************************
+ * ACTION TO SHOW OR HIDE SECTIONS *
+ ***********************************/
 
 function showContent() {
   loaderContenainer.style.display = "none";
@@ -110,11 +123,15 @@ function autoHide() {
 }
 
 function enterGame() {
+  localStorage.clear();
   loader.style.display = "none";
   game.style.display = "flex";
   inGame = true;
 }
 
+/*******************************************
+ * GET INFORMATIONS ABOUT FOUNDED LANGUAGE *
+ *******************************************/
 
 async function getDescription() {
   inGame = false
@@ -139,6 +156,10 @@ async function getDescription() {
     console.log("error");
   }
 }
+
+/*******************************
+ * RECALL FUNCTION DESCRIPTION *
+ *******************************/
 
 async function reGetDescription(what) {
   inGame = false
@@ -198,6 +219,10 @@ async function getConfidential() {
     console.log("error");
   }
 }
+
+/**************************************************
+ * CHECK IF THE LANGUAGE IS IN THE ORIGINAL ARRAY *
+ **************************************************/
 
 function checkLanguage() {
   console.log(languageFrounded);
@@ -263,11 +288,23 @@ function checkLanguage() {
   console.log(languageFrounded);
 }
 
+/************************
+ * SAVE IN LOCALSTORAGE *
+ ************************/
+
+function saveGame(){
+  localStorage.setItem('languagesFounded', JSON.stringify(languageFrounded));
+  localStorage.setItem('scrore', founded);
+  localStorage.setItem('errors', errors);
+
+}
+
+
 //ACTIONS
 
 window.onload = move;
 //LOADER DISEAPEAR
-setTimeout(showContent, 0);
+setTimeout(showContent, 4000);
 startGame.addEventListener("click", enterGame);
 
 //ANSWER SECTION
@@ -410,6 +447,8 @@ let restart = document.querySelectorAll(".restartGame")
 restart.forEach((restartBtn) => {
     restartBtn.addEventListener("click", restartGame);
 })
+
+document.querySelector(".saveGame").addEventListener("click", saveGame)
 
 
 
