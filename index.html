@@ -525,17 +525,18 @@
     </section>
 
     <div id="cookieNotice" class="light display-right" style="display: none;">
-        <div id="closeIcon" style="display: none;">
-        </div>
+       
         <div class="title-wrap">
-            <h4>Blah blah blah Cookie !</h4>
+            <span class="material-symbols-outlined">
+                cookie
+                </span> <h4>Blah blah blah Cookie !</h4>
         </div>
         <div class="content-wrap">
             <div class="msg-wrap">
                 <p>Bon ok, ces cookies ne sont ni sucrés, ni chocolatés, ni moelleux mais on utilise quelques services pour mesurer notre audience. Et ça, ça vaut tous les cookies du monde.</p>
                 <div class="btn-wrap">
-                    <button class="btn-primary" onclick="refuseCookieConsent();">refuse</button>
-                    <button class="btn-primary" onclick="acceptCookieConsent();">Accept</button>
+                    <button class="btn-refuse" onclick="refuseCookieConsent();">Refuser</button>
+                    <button class="btn-accept" onclick="acceptCookieConsent();">Accepter</button>
                 </div>
             </div>
         </div>
