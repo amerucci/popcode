@@ -201,6 +201,34 @@ body {padding: 0px;margin: 0px;font-size: 12px;font-family: gothammedium;overflo
   .instructionContent{display:none;}
   .instructionsNumber{display:none;}
   #startGame{display:none;}
+  .explainationBox {
+    overflow: hidden;
+    position: relative;
+    width: 95vh;
+    padding-left: initial;
+    margin: auto;
+}
+.explainationTitle {
+  font-size: 20px;
+}
+#legals {
+  flex-direction: initial;
+  padding: 10%;
+  width: 80%;
+}
+.explainationText {
+    padding-right: 40px;
+    padding-left: 0;
+    color: rgb(255, 255, 255);
+    max-width: initial;
+    height: 40vh;
+    overflow-y: auto;
+    max-height: 457px;
+    font-size: 13px;
+    line-height: 20px;
+    flex-wrap: wrap;
+    display: flex;
+}
 }
 
 p {
