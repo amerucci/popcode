@@ -106,6 +106,7 @@ function hideAlreadyFind() {
 function autoHide() {
   document.querySelector("#explaination").style = "display:none";
   theAnswer.value = "";
+  inGame = true;
 }
 
 function enterGame() {
@@ -113,6 +114,7 @@ function enterGame() {
   game.style.display = "flex";
   inGame = true;
 }
+
 
 async function getDescription() {
   inGame = false
@@ -122,6 +124,30 @@ async function getDescription() {
     //console.log(data.languages.langage)
     const index = data.languages.langage.findIndex((object) => {
       return object.name === theAnswer.value.toLowerCase().replace("é", "e");
+    });
+
+    console.log(data.languages.langage[index]);
+    document.querySelector(".explainationTitle").innerHTML =
+      data.languages.langage[index].name;
+    document.querySelector(".explainationText").innerHTML =
+      data.languages.langage[index].description;
+    document.querySelector(".explainationPicture").innerHTML =
+      "<img src='" + data.languages.langage[index].picture + "' />";
+
+    theAnswer.value = "";
+  } else {
+    console.log("error");
+  }
+}
+
+async function reGetDescription(what) {
+  inGame = false
+  let response = await fetch("./js/languages.json");
+  if (response.ok) {
+    let data = await response.json();
+    //console.log(data.languages.langage)
+    const index = data.languages.langage.findIndex((object) => {
+      return object.name === what;
     });
 
     console.log(data.languages.langage[index]);
@@ -240,7 +266,8 @@ function checkLanguage() {
 //ACTIONS
 
 window.onload = move;
-setTimeout(showContent, 4000);
+//LOADER DISEAPEAR
+setTimeout(showContent, 0);
 startGame.addEventListener("click", enterGame);
 
 //ANSWER SECTION
@@ -300,8 +327,28 @@ languageFound.addEventListener("click", function () {
     document.querySelector(".languageFoundedText").innerHTML =
       "Aucun langage trouvé";
   } else {
-    document.querySelector(".languageFoundedText").innerHTML =
-      languageFrounded.join(" - ");
+   
+    let itemFound = ""
+    languageFrounded.forEach(element => {
+      itemFound += "<span class='item'>"+element+"</span>"
+    }); 
+    document.querySelector(".languageFoundedText").innerHTML = itemFound
+
+    let itemsFounded = document.querySelectorAll(".item")
+     console.log(itemsFounded)
+    itemsFounded.forEach(element => {
+      element.onclick = function(){
+        document.querySelector("#explaination").style = "display:flex";
+        document.querySelector(".explainationTitle").innerHTML = element.textContent;
+        reGetDescription(element.textContent)
+      }
+       
+    });
+
+    // document.querySelector(".languageFoundedText").innerHTML =languageFrounded.join(" - ");
+
+    
+
   }
 });
 
@@ -338,6 +385,7 @@ checkBox.addEventListener("change", function () {
     console.log("Checkbox is not checked..");
   }
 });
+
 
 // CURSOR
 
