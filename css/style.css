@@ -207,6 +207,7 @@ body {padding: 0px;margin: 0px;font-size: 12px;font-family: gothammedium;overflo
     width: 95vh;
     padding-left: initial;
     margin: auto;
+    height: 90vh;
 }
 .explainationTitle {
   font-size: 20px;
@@ -221,9 +222,9 @@ body {padding: 0px;margin: 0px;font-size: 12px;font-family: gothammedium;overflo
     padding-left: 0;
     color: rgb(255, 255, 255);
     max-width: initial;
-    height: 40vh;
+    height: 65vh;
     overflow-y: auto;
-    max-height: 457px;
+    max-height: initial;
     font-size: 13px;
     line-height: 20px;
     flex-wrap: wrap;
