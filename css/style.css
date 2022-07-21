@@ -336,7 +336,7 @@ a{
   overflow: hidden;
 }
 
-.saveGameContent{   border: 1px solid rgb(255, 255, 255);
+.saveGameContent{   
   padding: 10px 20px;
   /* cursor: pointer; */
   font-size: 8px;
@@ -368,6 +368,7 @@ align-items: center;}
 }
 
 .saveGameContent.sg1 {
+  border: 1px solid rgb(255, 255, 255);
   transform-origin:top;  transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;

@@ -133,7 +133,14 @@ function enterGame() {
 function reloadGame(){
   loader.style.display = "none";
   game.style.display = "flex";
+  document.querySelector("#youWin").style =
+  "display:none;";
+  document.querySelector("#youLose").style =
+  "display:none;";
   inGame = true; 
+  scoreErrorOne.style = "color:#FFF";
+    scoreErrorTwo.style = "color:#FFF";
+    scoreErrorThree.style = "color:#FFF";
   let scoreFromStorage = localStorage.getItem('scrore');
   let errorsFromStorage = localStorage.getItem('errors');
   let languageFoundedFromStorage = localStorage.getItem('languagesFounded');
@@ -481,10 +488,18 @@ document.addEventListener("click", () => {
   }, 500);
 });
 
-let restart = document.querySelectorAll(".restartGame")
+let restart = document.querySelectorAll("#startGame")
 restart.forEach((restartBtn) => {
     restartBtn.addEventListener("click", restartGame);
 })
+
+let reGame = document.querySelectorAll("#reloadGame")
+reGame.forEach((restartBtn) => {
+    restartBtn.addEventListener("click", reloadGame);
+})
+
+
+
 
 document.querySelector(".saveGame").addEventListener("click", saveGame)
 
