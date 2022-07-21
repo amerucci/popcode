@@ -45,7 +45,7 @@ function acceptCookieConsent(){
     setCookie('user_cookie_consent', 1, 30);
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());‡
+    gtag('js', new Date());
     gtag('config', 'G-ZWKNYV187G');
     document.getElementById("cookieNotice").style.display = "none";
 }
