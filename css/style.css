@@ -30,7 +30,17 @@ svg { width: 100%; }
 .instructions { text-align: center; display: flex; flex-flow: column nowrap; align-items: center; }
 .instructionsNumber { color: rgb(10, 239, 247); font-size: 150px; letter-spacing: -11px; font-family: gothambold; }
 .instructionContent { color: rgb(255, 255, 255); text-transform: uppercase; font-size: 13px; line-height: 30px; font-weight: lighter; font-family: gothambook; max-width: 240px; }
-button#startGame, button.restartGame {border: none;background: transparent;color: rgb(255, 170, 255);font-size: 10px;letter-spacing: 5px;margin-top: 30px;cursor: none;}
+button#startGame {    border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-top: 30px;
+  cursor: none;
+  background: #FFAAFF;
+  border: 1px solid #FFAAFF;
+  padding: 10px;}
+button.restartGame {border: none;background: transparent;color: rgb(255, 170, 255);font-size: 10px;letter-spacing: 5px;margin-top: 30px;cursor: none;}
 #game { height: 100vh; margin: 0px auto; max-width: 100%; width: 100vw; }
 #game .zoom { background-color: rgb(221, 221, 221); height: 100%; margin: auto; overflow: hidden; width: 100%; }
 #game .zoom .media { inset: 0px; display: block; margin: auto; width: 100%; position: absolute; transform-style: preserve-3d; }
@@ -326,15 +336,81 @@ a{
   position: absolute;
   right: 165px;
   bottom: 20px;
-  border: 1px solid rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  overflow: hidden;
+}
+
+.saveGameContent{   border: 1px solid rgb(255, 255, 255);
   padding: 10px 20px;
   /* cursor: pointer; */
   font-size: 8px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
+display:flex;
+align-items: center;}
+
+  .saveGameContent.sg2 {
+    position: absolute;
+    transform-origin: top;
+    transform:translateY(100%) rotateX(-90deg);
+    top: 0;
+    left: 0;
+    -webkit-transform:translateY(100%) rotateX(-90deg);
+    -moz-transform:translateY(100%) rotateX(-90deg);
+    -ms-transform:translateY(100%) rotateX(-90deg);
+    -o-transform:translateY(100%) rotateX(-90deg);
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
 }
+.saveGameContent.sg2 {
+ transform-origin: top;
+ background:#FFAAFF;
+ border: 1px solid #FFAAFF;
+}
+
+.saveGameContent.sg1 {
+  transform-origin:top;  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.saveGame:hover .saveGameContent.sg1{
+ transform:translateY(100%) rotateX(-90deg);
+ -webkit-transform:translateY(100%) rotateX(-90deg);
+ -moz-transform:translateY(100%) rotateX(-90deg);
+ -ms-transform:translateY(100%) rotateX(-90deg);
+ -o-transform:translateY(100%) rotateX(-90deg);
+}
+
+.saveGame:hover .saveGameContent.sg2{
+  transform:translateY(0%) rotateX(0deg);
+  -webkit-transform:translateY(0%) rotateX(0deg);
+  -moz-transform:translateY(0%) rotateX(0deg);
+  -ms-transform:translateY(0%) rotateX(0deg);
+  -o-transform:translateY(0%) rotateX(0deg);
+}
+
+#reloadGame{
+  border: none;
+  background: transparent;
+  color: rgb(255, 170, 255);
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-top: 30px;
+  cursor: none;
+}
+
 
 
 /* @media (max-width:1190px){
