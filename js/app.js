@@ -63,20 +63,20 @@ window.addEventListener("load", function () {
  * REINITIALIZE ALL THE VARIALES WHEN RESTARTING GAME *
  ******************************************************/
 
-function restartGame(){
+function restartGame() {
   localStorage.clear();
-    languageFrounded = [];
-    founded = 0;
-    errors = 0;
-    inGame = true
-    document.querySelector("#youWin").style =
+  languageFrounded = [];
+  founded = 0;
+  errors = 0;
+  inGame = true
+  document.querySelector("#youWin").style =
     "display:none;";
-    document.querySelector("#youLose").style =
+  document.querySelector("#youLose").style =
     "display:none;";
-    scoreFind.innerHTML = "00"
-    scoreErrorOne.style = "color:#FFF";
-    scoreErrorTwo.style = "color:#FFF";
-    scoreErrorThree.style = "color:#FFF";
+  scoreFind.innerHTML = "00"
+  scoreErrorOne.style = "color:#FFF";
+  scoreErrorTwo.style = "color:#FFF";
+  scoreErrorThree.style = "color:#FFF";
 
   document.querySelector("#explaination").style = "display:none";
   checked = false;
@@ -117,6 +117,16 @@ function hideAlreadyFind() {
   theAnswer.value = "";
 }
 
+function hideGameSaved() {
+  document.querySelector("#gameSaved").style = "display:none";
+  theAnswer.value = "";
+}
+
+function hideError() {
+  document.querySelector("#errorDisplay").style = "display:none";
+  theAnswer.value = "";
+}
+
 function autoHide() {
   document.querySelector("#explaination").style = "display:none";
   theAnswer.value = "";
@@ -127,20 +137,20 @@ function enterGame() {
   localStorage.clear();
   loader.style.display = "none";
   game.style.display = "flex";
-  inGame = true; 
+  inGame = true;
 }
 
-function reloadGame(){
+function reloadGame() {
   loader.style.display = "none";
   game.style.display = "flex";
   document.querySelector("#youWin").style =
-  "display:none;";
+    "display:none;";
   document.querySelector("#youLose").style =
-  "display:none;";
-  inGame = true; 
+    "display:none;";
+  inGame = true;
   scoreErrorOne.style = "color:#FFF";
-    scoreErrorTwo.style = "color:#FFF";
-    scoreErrorThree.style = "color:#FFF";
+  scoreErrorTwo.style = "color:#FFF";
+  scoreErrorThree.style = "color:#FFF";
   let scoreFromStorage = localStorage.getItem('scrore');
   let errorsFromStorage = localStorage.getItem('errors');
   let languageFoundedFromStorage = localStorage.getItem('languagesFounded');
@@ -316,9 +326,13 @@ function checkLanguage() {
     errors += 1;
     switch (errors) {
       case 1:
+        document.querySelector("#errorDisplay").style = "display:flex";
+        setTimeout(hideError, 800);
         scoreErrorOne.style = "color:#0AEFF7";
         break;
       case 2:
+        document.querySelector("#errorDisplay").style = "display:flex";
+        setTimeout(hideError, 800);
         scoreErrorTwo.style = "color:#0AEFF7";
         break;
       case 3:
@@ -336,7 +350,9 @@ function checkLanguage() {
  * SAVE IN LOCALSTORAGE *
  ************************/
 
-function saveGame(){
+function saveGame() {
+  document.querySelector("#gameSaved").style = "display:flex";
+  setTimeout(hideGameSaved, 800);
   localStorage.setItem('languagesFounded', JSON.stringify(languageFrounded));
   localStorage.setItem('scrore', founded);
   localStorage.setItem('errors', errors);
@@ -402,34 +418,34 @@ document.querySelector("#theAnswer").addEventListener("click", function () {
 });
 
 languageFound.addEventListener("click", function () {
-  inGame = false 
+  inGame = false
   document.querySelector("#languageFounded").style = "display:flex";
   console.log(languageFrounded.length);
   if (languageFrounded.length == 0) {
     document.querySelector(".languageFoundedText").innerHTML =
       "Aucun langage trouvé";
   } else {
-   
+
     let itemFound = ""
     languageFrounded.forEach(element => {
-      itemFound += "<span class='item'>"+element+"</span>"
-    }); 
+      itemFound += "<span class='item'>" + element + "</span>"
+    });
     document.querySelector(".languageFoundedText").innerHTML = itemFound
 
     let itemsFounded = document.querySelectorAll(".item")
-     console.log(itemsFounded)
+    console.log(itemsFounded)
     itemsFounded.forEach(element => {
-      element.onclick = function(){
+      element.onclick = function () {
         document.querySelector("#explaination").style = "display:flex";
         document.querySelector(".explainationTitle").innerHTML = element.textContent;
         reGetDescription(element.textContent)
       }
-       
+
     });
 
     // document.querySelector(".languageFoundedText").innerHTML =languageFrounded.join(" - ");
 
-    
+
 
   }
 });
@@ -490,18 +506,15 @@ document.addEventListener("click", () => {
 
 let restart = document.querySelectorAll("#startGame")
 restart.forEach((restartBtn) => {
-    restartBtn.addEventListener("click", restartGame);
+  restartBtn.addEventListener("click", restartGame);
 })
 
 let reGame = document.querySelectorAll("#reloadGame")
 reGame.forEach((restartBtn) => {
-    restartBtn.addEventListener("click", reloadGame);
+  restartBtn.addEventListener("click", reloadGame);
 })
 
 
 
 
 document.querySelector(".saveGame").addEventListener("click", saveGame)
-
-
-

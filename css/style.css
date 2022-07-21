@@ -35,7 +35,7 @@ button.restartGame {border: none;background: transparent;color: rgb(255, 170, 25
 #game .zoom { background-color: rgb(221, 221, 221); height: 100%; margin: auto; overflow: hidden; width: 100%; }
 #game .zoom .media { inset: 0px; display: block; margin: auto; width: 100%; position: absolute; transform-style: preserve-3d; }
 .transition { transition: transform 200ms ease 0s; }
-#answer, #languageFounded, #aleradyFounded, #explaination, #legals, #youLose, #youWin { position: absolute; background: rgba(0, 0, 0, 0.7); width: 100vw; height: 100vh; top: 0px; z-index: 2; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+#answer, #languageFounded, #aleradyFounded, #explaination, #legals, #youLose, #youWin, #gameSaved, #errorDisplay { position: absolute; background: rgba(0, 0, 0, 0.7); width: 100vw; height: 100vh; top: 0px; z-index: 2; display: flex; justify-content: center; align-items: center; flex-direction: column; }
 #theAnswer { font-size: 80px; color: rgb(255, 255, 255); border: none; background: transparent; text-align: center; text-transform: uppercase; }
 #close { color: rgb(255, 255, 255); }
 .theAnswerInstruction {color: rgb(255, 255, 255);letter-spacing: 5px;margin-top: 50px;font-family: gothambook;text-transform: uppercase;text-align: center;}
@@ -64,6 +64,8 @@ body {padding: 0px;margin: 0px;font-size: 12px;font-family: gothammedium;overflo
   display: inline-block;
   margin: 10px;
 }
+.gameSavedText { font-size: 70px; color: rgb(255, 255, 255); border: none; background: transparent; text-align: center; text-transform: uppercase; padding: 1%; }
+.errorDisplayText { font-size: 70px; color: rgb(255, 255, 255); border: none; background: transparent; text-align: center; text-transform: uppercase; padding: 1%; }
 #explaination {align-items: flex-start;color: rgb(255, 255, 255);/* padding-left: 10%; */justify-content: center;}
 .explainationBox {overflow: hidden;position: relative;width: 60vw;padding-left: 10%;}
 .explainationTitle {text-transform: uppercase;color: rgb(255, 255, 255);font-size: 80px;padding: 0px;margin: 0px;width: 85%;margin-bottom: 40px;}
