@@ -144,6 +144,23 @@ function reloadGame(){
       scoreFind.innerHTML = founded;
     }
   }
+  errors = parseInt(errorsFromStorage)
+  switch (errors) {
+    case 1:
+      scoreErrorOne.style = "color:#0AEFF7";
+      break;
+    case 2:
+      scoreErrorOne.style = "color:#0AEFF7"
+      scoreErrorTwo.style = "color:#0AEFF7";
+      break;
+    case 3:
+      scoreErrorThree.style = "color:#0AEFF7";
+      document.querySelector("#youLose").style =
+        "display:flex; background: url('./img/fond.jpg') center center / cover;; ";
+      break;
+  }
+
+
 
 }
 
@@ -322,7 +339,7 @@ function saveGame(){
 
 window.onload = move;
 //LOADER DISEAPEAR
-setTimeout(showContent, 4000);
+setTimeout(showContent, 0);
 startGame.addEventListener("click", enterGame);
 reloadGameBtn.addEventListener("click", reloadGame);
 

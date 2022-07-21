@@ -337,7 +337,7 @@ a{
 }
 
 
-@media (max-width:1190px){
+/* @media (max-width:1190px){
   #game{display:none!important;}
   .toSmall{display:block!important; color: rgb(255, 255, 255);
     text-transform: uppercase;
@@ -384,4 +384,4 @@ a{
   bottom: 0;
   max-width: 100%;
 }
-}
+} */
