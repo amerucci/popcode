@@ -348,7 +348,7 @@ reloadGameBtn.addEventListener("click", reloadGame);
 //ANSWER SECTION
 
 window.addEventListener("keydown", function (event) {
-  var keysAllowed = "abcdefghijklmnopqrstuvwxyz+-#";
+  var keysAllowed = "abcdefghijklmnopqrstuvwxyz+-#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var key = event.key;
   console.log(key);
 
