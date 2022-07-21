@@ -136,6 +136,7 @@ function reloadGame(){
   inGame = true; 
   let scoreFromStorage = localStorage.getItem('scrore');
   let errorsFromStorage = localStorage.getItem('errors');
+  let languageFoundedFromStorage = localStorage.getItem('languagesFounded');
   if (scoreFromStorage.length > 0) {
     founded = parseInt(scoreFromStorage)
     if (founded < 10) {
@@ -159,6 +160,7 @@ function reloadGame(){
         "display:flex; background: url('./img/fond.jpg') center center / cover;; ";
       break;
   }
+  languageFrounded = JSON.parse(languageFoundedFromStorage)
 
 
 
