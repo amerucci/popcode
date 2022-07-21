@@ -541,7 +541,11 @@ align-items: center;}
 
 
 
-/* @media (max-width:1190px){
+@media (max-width:1190px){
+
+.loaderContenainer{display:none}
+.instructions{display:flex!important}
+
   #game{display:none!important;}
   .toSmall{display:block!important; color: rgb(255, 255, 255);
     text-transform: uppercase;
@@ -552,7 +556,7 @@ align-items: center;}
     max-width: 240px}
   .instructionContent{display:none;}
   .instructionsNumber{display:none;}
-  #startGame{display:none;}
+  #startGame, #reloadGame, .cursor{display:none;}
   .explainationBox {
     overflow: hidden;
     position: relative;
@@ -588,4 +592,4 @@ align-items: center;}
   bottom: 0;
   max-width: 100%;
 }
-} */
+}

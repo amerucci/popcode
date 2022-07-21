@@ -348,7 +348,7 @@ function saveGame(){
 
 window.onload = move;
 //LOADER DISEAPEAR
-setTimeout(showContent, 0);
+setTimeout(showContent, 4000);
 startGame.addEventListener("click", enterGame);
 reloadGameBtn.addEventListener("click", reloadGame);
 
