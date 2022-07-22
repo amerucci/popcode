@@ -84,11 +84,30 @@ function restartGame() {
 
 }
 
+function showReloadOrNot(){
+  let checkScore = localStorage.getItem('scrore')
+  let reloadBtn = document.querySelectorAll("#reloadGame")
+  if (checkScore) {
+   //console.log("il y a une partie sauvegardé")
+    reloadBtn.forEach(element => {
+      element.innerHTML="CHARGER UNE PARTIE"
+    });
+  }
+  else {
+    //console.log("il n'y a pas de partie sauvegardée")
+    reloadBtn.forEach(element => {
+      element.innerHTML=""
+    });
+  }
+}
+
+
 /*************************
  * SCRIPT FOR THE LOADER *
  *************************/
 
 function move() {
+  showReloadOrNot()
   var width = 1;
   var id = setInterval(frame, 33);
 
@@ -125,6 +144,7 @@ function hideGameSaved() {
 function hideError() {
   document.querySelector("#errorDisplay").style = "display:none";
   theAnswer.value = "";
+  showReloadOrNot()
 }
 
 function autoHide() {
@@ -134,6 +154,7 @@ function autoHide() {
 }
 
 function enterGame() {
+  showReloadOrNot()
   localStorage.clear();
   loader.style.display = "none";
   game.style.display = "flex";
@@ -154,7 +175,7 @@ function reloadGame() {
   let scoreFromStorage = localStorage.getItem('scrore');
   let errorsFromStorage = localStorage.getItem('errors');
   let languageFoundedFromStorage = localStorage.getItem('languagesFounded');
-  if (scoreFromStorage.length > 0) {
+  if (scoreFromStorage) {
     founded = parseInt(scoreFromStorage)
     if (founded < 10) {
       scoreFind.innerHTML = "0" + founded;
@@ -162,6 +183,10 @@ function reloadGame() {
       scoreFind.innerHTML = founded;
     }
   }
+  else{
+    console.log('Name is not found');
+  }
+  if (errorsFromStorage) {
   errors = parseInt(errorsFromStorage)
   switch (errors) {
     case 1:
@@ -173,10 +198,12 @@ function reloadGame() {
       break;
     case 3:
       scoreErrorThree.style = "color:#0AEFF7";
+      showReloadOrNot()
       document.querySelector("#youLose").style =
         "display:flex; background: url('./img/fond.jpg') center center / cover;; ";
       break;
   }
+}
   languageFrounded = JSON.parse(languageFoundedFromStorage)
 
 
@@ -508,6 +535,8 @@ let restart = document.querySelectorAll("#startGame")
 restart.forEach((restartBtn) => {
   restartBtn.addEventListener("click", restartGame);
 })
+
+document.querySelector(".restartGame").addEventListener("click", restartGame);
 
 let reGame = document.querySelectorAll("#reloadGame")
 reGame.forEach((restartBtn) => {
