@@ -12,35 +12,36 @@ var isTyping = false;
 var theAnswer = document.querySelector("#theAnswer");
 var close = document.querySelector("#close");
 var languageFound = document.querySelector(".languageFound");
-let languages = [
-  "javascript",
-  "html",
-  "css",
-  "python",
-  "java",
-  "bash",
-  "powershell",
-  "c#",
-  "php",
-  "c++",
-  "typescript",
-  "c",
-  "ruby",
-  "go",
-  "assembly",
-  "swift",
-  "kotlin",
-  "r",
-  "vba",
-  "objective-c",
-  "scala",
-  "rust",
-  "dart",
-  "elixir",
-  "clojure",
-  "webassembly",
-  "sql",
-];
+// let languages = [
+//   "javascript",
+//   "html",
+//   "css",
+//   "python",
+//   "java",
+//   "bash",
+//   "powershell",
+//   "c#",
+//   "php",
+//   "c++",
+//   "typescript",
+//   "c",
+//   "ruby",
+//   "go",
+//   "assembly",
+//   "swift",
+//   "kotlin",
+//   "r",
+//   "vba",
+//   "objective-c",
+//   "scala",
+//   "rust",
+//   "dart",
+//   "elixir",
+//   "clojure",
+//   "webassembly",
+//   "sql",
+// ];
+let languages = [];
 var languageFrounded = [];
 let scoreFind = document.querySelector(".scoreFind");
 let scoreErrorOne = document.querySelector(".scoreErrorOne");
@@ -52,6 +53,7 @@ let checked = false;
 
 let founded = 0;
 let errors = 0;
+let purpose
 
 window.addEventListener("load", function () {
   scoreFind.innerHTML = founded;
@@ -84,19 +86,18 @@ function restartGame() {
 
 }
 
-function showReloadOrNot(){
+function showReloadOrNot() {
   let checkScore = localStorage.getItem('scrore')
   let reloadBtn = document.querySelectorAll("#reloadGame")
   if (checkScore) {
-   //console.log("il y a une partie sauvegardé")
+    //console.log("il y a une partie sauvegardé")
     reloadBtn.forEach(element => {
-      element.innerHTML="CHARGER UNE PARTIE"
+      element.innerHTML = "CHARGER UNE PARTIE"
     });
-  }
-  else {
+  } else {
     //console.log("il n'y a pas de partie sauvegardée")
     reloadBtn.forEach(element => {
-      element.innerHTML=""
+      element.innerHTML = ""
     });
   }
 }
@@ -182,32 +183,28 @@ function reloadGame() {
     } else {
       scoreFind.innerHTML = founded;
     }
-  }
-  else{
+  } else {
     console.log('Name is not found');
   }
   if (errorsFromStorage) {
-  errors = parseInt(errorsFromStorage)
-  switch (errors) {
-    case 1:
-      scoreErrorOne.style = "color:#0AEFF7";
-      break;
-    case 2:
-      scoreErrorOne.style = "color:#0AEFF7"
-      scoreErrorTwo.style = "color:#0AEFF7";
-      break;
-    case 3:
-      scoreErrorThree.style = "color:#0AEFF7";
-      showReloadOrNot()
-      document.querySelector("#youLose").style =
-        "display:flex; background: url('./img/fond.jpg') center center / cover;; ";
-      break;
+    errors = parseInt(errorsFromStorage)
+    switch (errors) {
+      case 1:
+        scoreErrorOne.style = "color:#0AEFF7";
+        break;
+      case 2:
+        scoreErrorOne.style = "color:#0AEFF7"
+        scoreErrorTwo.style = "color:#0AEFF7";
+        break;
+      case 3:
+        scoreErrorThree.style = "color:#0AEFF7";
+        showReloadOrNot()
+        document.querySelector("#youLose").style =
+          "display:flex; background: url('./img/fond.jpg') center center / cover;; ";
+        break;
+    }
   }
-}
   languageFrounded = JSON.parse(languageFoundedFromStorage)
-
-
-
 }
 
 /*******************************************
@@ -221,7 +218,7 @@ async function getDescription() {
     let data = await response.json();
     //console.log(data.languages.langage)
     const index = data.languages.langage.findIndex((object) => {
-      return object.name === theAnswer.value.toLowerCase().replace("é", "e");
+      return object.name === purpose;
     });
 
     console.log(data.languages.langage[index]);
@@ -237,6 +234,28 @@ async function getDescription() {
     console.log("error");
   }
 }
+
+/***********************
+ * FILL LANGUAGE ARRAY *
+ ***********************/
+
+ async function getFillArray() {
+  inGame = false
+  let response = await fetch("./js/languages.json");
+  if (response.ok) {
+    let data = await response.json();
+    objectJSON=data.languages.langage
+    objectJSON.forEach(element => {
+      languages.push(element.name);
+   });
+
+  } else {
+    console.log("error");
+  }
+}
+
+getFillArray()
+console.log(languages)
 
 /*******************************
  * RECALL FUNCTION DESCRIPTION *
@@ -305,25 +324,77 @@ async function getConfidential() {
  * CHECK IF THE LANGUAGE IS IN THE ORIGINAL ARRAY *
  **************************************************/
 
+//LEVENSHTEIN FUNCTIONS ********************************
+
+const calculateLevenshteinDistance = (a, b) => {
+  const aLimit = a.length + 1;
+  const bLimit = b.length + 1;
+  const distance = Array(aLimit);
+  for (let i = 0; i < aLimit; ++i) {
+    distance[i] = Array(bLimit);
+  }
+  for (let i = 0; i < aLimit; ++i) {
+    distance[i][0] = i;
+  }
+  for (let j = 0; j < bLimit; ++j) {
+    distance[0][j] = j;
+  }
+  for (let i = 1; i < aLimit; ++i) {
+    for (let j = 1; j < bLimit; ++j) {
+      const substitutionCost = (a[i - 1] === b[j - 1] ? 0 : 1);
+      distance[i][j] = Math.min(
+        distance[i - 1][j] + 1,
+        distance[i][j - 1] + 1,
+        distance[i - 1][j - 1] + substitutionCost
+      );
+    }
+  }
+  return distance[a.length][b.length];
+};
+
+const calculateImprovedLevenshteinDistance = (a, b) => {
+  return calculateLevenshteinDistance(a.toLowerCase(), b.toLowerCase());
+};
+
 function checkLanguage() {
-  console.log(languageFrounded);
+  //console.log(languageFrounded);
   let language = theAnswer.value;
   let find = false;
   let alreadyFounded = false;
-  if (languages.indexOf(language.toLowerCase().replace("é", "e")) === -1) {
-    console.log("n'est pas dans le tableau");
-    find = false;
-  } else {
-    console.log(language + " est dans le tableau");
-    if (languageFrounded.indexOf(language) === -1) {
-      languageFrounded.push(language.toLowerCase().replace("é", "e"));
-      find = true;
-      alreadyFounded = false;
+  languages.forEach(element => {
+    if (calculateImprovedLevenshteinDistance(language, element) < 2) {
+      // console.log('LEVEN - le mot est bien dans le tableau')
+      // console.log("LEVEN - " + element)
+      if (languageFrounded.indexOf(element) === -1) {
+        languageFrounded.push(element);
+        purpose = element
+        find = true;
+        alreadyFounded = false;
+      } else {
+        find = true;
+        alreadyFounded = true;
+      }
     } else {
-      find = true;
-      alreadyFounded = true;
+      console.log('LEVEN - non le mot est pas dans le tableau')
     }
-  }
+
+  });
+  console.log("LEVEN - A la fin find vaut" + find)
+
+  // if (languages.indexOf(language.toLowerCase().replace("é", "e")) === -1) {
+  //   console.log("n'est pas dans le tableau");
+  //   find = false;
+  // } else {
+  //   console.log(language + " est dans le tableau");
+  //   if (languageFrounded.indexOf(language) === -1) {
+  //     languageFrounded.push(language.toLowerCase().replace("é", "e"));
+  //     find = true;
+  //     alreadyFounded = false;
+  //   } else {
+  //     find = true;
+  //     alreadyFounded = true;
+  //   }
+  // }
   if (find === true && alreadyFounded === false) {
     founded += 1;
     if (founded < 10) {
