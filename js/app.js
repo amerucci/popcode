@@ -280,7 +280,7 @@ async function reGetDescription(what) {
       "<img src='" + data.languages.langage[index].picture + "' />";
 
     theAnswer.value = "";
-  } else {
+  } else { 
     console.log("error");
   }
 }
