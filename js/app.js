@@ -148,6 +148,12 @@ function hideError() {
   showReloadOrNot()
 }
 
+function hideAlmost() {
+  document.querySelector("#almostDisplay").style = "display:none";
+  theAnswer.value = "";
+  showReloadOrNot()
+}
+
 function autoHide() {
   document.querySelector("#explaination").style = "display:none";
   theAnswer.value = "";
@@ -326,78 +332,126 @@ async function getConfidential() {
 
 //LEVENSHTEIN FUNCTIONS ********************************
 
-// const calculateLevenshteinDistance = (a, b) => {
-//   const aLimit = a.length + 1;
-//   const bLimit = b.length + 1;
-//   const distance = Array(aLimit);
-//   for (let i = 0; i < aLimit; ++i) {
-//     distance[i] = Array(bLimit);
-//   }
-//   for (let i = 0; i < aLimit; ++i) {
-//     distance[i][0] = i;
-//   }
-//   for (let j = 0; j < bLimit; ++j) {
-//     distance[0][j] = j;
-//   }
-//   for (let i = 1; i < aLimit; ++i) {
-//     for (let j = 1; j < bLimit; ++j) {
-//       const substitutionCost = (a[i - 1] === b[j - 1] ? 0 : 1);
-//       distance[i][j] = Math.min(
-//         distance[i - 1][j] + 1,
-//         distance[i][j - 1] + 1,
-//         distance[i - 1][j - 1] + substitutionCost
-//       );
-//     }
-//   }
-//   return distance[a.length][b.length];
-// };
+const calculateLevenshteinDistance = (a, b) => {
+  const aLimit = a.length + 1;
+  const bLimit = b.length + 1;
+  const distance = Array(aLimit);
+  for (let i = 0; i < aLimit; ++i) {
+    distance[i] = Array(bLimit);
+  }
+  for (let i = 0; i < aLimit; ++i) {
+    distance[i][0] = i;
+  }
+  for (let j = 0; j < bLimit; ++j) {
+    distance[0][j] = j;
+  }
+  for (let i = 1; i < aLimit; ++i) {
+    for (let j = 1; j < bLimit; ++j) {
+      const substitutionCost = (a[i - 1] === b[j - 1] ? 0 : 1);
+      distance[i][j] = Math.min(
+        distance[i - 1][j] + 1,
+        distance[i][j - 1] + 1,
+        distance[i - 1][j - 1] + substitutionCost
+      );
+    }
+  }
+  return distance[a.length][b.length];
+};
 
-// const calculateImprovedLevenshteinDistance = (a, b) => {
-//   return calculateLevenshteinDistance(a.toLowerCase(), b.toLowerCase());
-// };
+const calculateImprovedLevenshteinDistance = (a, b) => {
+  return calculateLevenshteinDistance(a.toLowerCase(), b.toLowerCase());
+};
 
 function checkLanguage() {
   //console.log(languageFrounded);
 
   let language = theAnswer.value;
   let find = false;
+  let almost = false
   let alreadyFounded = false;
-  // languages.forEach(element => {
-  //   if (calculateImprovedLevenshteinDistance(language, element) < 2) {
-  //     // console.log('LEVEN - le mot est bien dans le tableau')
-  //     // console.log("LEVEN - " + element)
-  //     if (languageFrounded.indexOf(element) === -1 && language === element ) {
-  //       languageFrounded.push(element);
-  //       purpose = element
-  //       find = true;
-  //       alreadyFounded = false;
-  //     } else {
-  //       find = true;
-  //       alreadyFounded = true;
-  //     }
-  //   } else {
-  //     console.log('LEVEN - non le mot est pas dans le tableau')
-  //   }
+  languages.forEach(element => {
 
-  // });
+console.log(calculateImprovedLevenshteinDistance(language, element))
+    switch (calculateImprovedLevenshteinDistance(language, element)) {
+      case 0:
+     
+        if (languageFrounded.indexOf(element) === -1 && language === element ) {
+          setTimeout(hideAlmost, 800);
+          languageFrounded.push(element);
+          purpose = element
+          find = true;
+          alreadyFounded = false;
+          almost = false;
+        } else {
+          setTimeout(hideAlmost, 800);
+          find = true;
+          alreadyFounded = true;
+          almost = false
+        
+        }
+        break;
+      case 1:
+        setTimeout(hideAlmost, 800);
+        almost = true
+     
+       
+   
+    }
+
+
+
+
+    // if (calculateImprovedLevenshteinDistance(language, element) < 2) {
+    //     console.log('LEVEN - le mot est bien dans le tableau')
+    //     console.log("LEVEN - " + element)
+    //     almost = true
+
+    //   // if(calculateImprovedLevenshteinDistance(language, element) == 0){
+    //   //   almost = false
+    //   //   if (languageFrounded.indexOf(element) === -1 && language === element ) {
+    //   //     languageFrounded.push(element);
+    //   //     purpose = element
+    //   //     find = true;
+         
+    //   //     alreadyFounded = false;
+    //   //   } else {
+    //   //     find = true;
+    //   //     alreadyFounded = true;
+        
+    //   //   }
+    //   // }
+
+    //   if(calculateImprovedLevenshteinDistance(language, element) == 1){
+    //     theAnswer.value = "";
+    //     document.querySelector("#errorDisplay").style = "display:flex";
+    //   }
+
+   
+
+   
+    // } else {
+    //   console.log('LEVEN - non le mot est pas dans le tableau')
+    // }
+
+  });
 //   // console.log("LEVEN - A la fin find vaut" + find)
 // langageTest = language.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 // console.log(langageTest)
-  if (languages.indexOf(language) === -1) {
-    console.log("n'est pas dans le tableau");
-    find = false;
-  } else {
-    console.log(language + " est dans le tableau");
-    if (languageFrounded.indexOf(language) === -1) {
-      languageFrounded.push(language);
-      find = true;
-      alreadyFounded = false;
-    } else {
-      find = true;
-      alreadyFounded = true;
-    }
-  }
-  if (find === true && alreadyFounded === false) {
+  // if (languages.indexOf(language) === -1) {
+  //   console.log("n'est pas dans le tableau");
+  //   find = false;
+  // } else {
+  //   console.log(language + " est dans le tableau");
+  //   if (languageFrounded.indexOf(language) === -1) {
+  //     languageFrounded.push(language);
+  //     find = true;
+  //     alreadyFounded = false;
+  //   } else {
+  //     find = true;
+  //     alreadyFounded = true;
+  //   }
+  // }
+  if (find === true && alreadyFounded === false &&  almost === false) {
     founded += 1;
     if (founded < 10) {
       scoreFind.innerHTML = "0" + founded;
@@ -418,10 +472,16 @@ function checkLanguage() {
     if (checked == true) {
       autoHide();
     }
-  } else if (find === true && alreadyFounded === true) {
+  }
+  else if(find === false && alreadyFounded === false &&  almost === true){
+    theAnswer.value = "";
+    document.querySelector("#almostDisplay").style = "display:flex";
+  }
+  else if (find === true && alreadyFounded === true &&  almost === false) {
     document.querySelector("#aleradyFounded").style = "display:flex";
     setTimeout(hideAlreadyFind, 800);
-  } else {
+  } 
+  else if (find === false && alreadyFounded === false &&  almost === false)  {
     theAnswer.value = "";
     errors += 1;
     switch (errors) {
@@ -464,7 +524,7 @@ function saveGame() {
 
 window.onload = move;
 //LOADER DISEAPEAR
-setTimeout(showContent, 4000);
+setTimeout(showContent, 0);
 startGame.addEventListener("click", enterGame);
 reloadGameBtn.addEventListener("click", reloadGame);
 
